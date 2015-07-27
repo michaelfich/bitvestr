@@ -8,7 +8,28 @@
 </head>
 <body>
 
-<%= yield %>
+  <header class="outer-container">
+    <header class="inner-container">
+      <h1>Bitvestr</h1>
+    </header>
+  </header>
+
+  <section class="outer-container">
+    <section class="inner-container">
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: "#{key}" %>
+      <% end %>
+
+      <%= yield %>
+    </section>
+  </section>
+
+  <footer class="outer-container">
+    <footer class="inner-container">
+      © Lucas Zarnett & Michael Fich 2015
+    </footer>
+  </footer>
+
 
 </body>
 </html>
