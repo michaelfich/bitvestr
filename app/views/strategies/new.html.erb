@@ -1,3 +1,20 @@
-<section class="outer-container">
+<h1>Create a new Strategy</h1>
+
+<%= form_for @strategy do |s| %>
   
-</section>
+  <div class="field">
+  <%= s.label :name %>
+  <%= s.text_field :name %>
+  </div>
+
+
+  <div class="field">
+  <%= s.label :interval %>
+  <%= s.text_field :interval %>
+  </div>
+  
+  <div class="field">
+    <%= s.button "Save" %>
+  </div>
+<% end %>
+

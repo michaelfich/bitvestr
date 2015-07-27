@@ -1,15 +1,15 @@
 class StrategiesController < ApplicationController
   
   def index
-    @strategies = Strategies.all
+    @strategies = Strategy.all
   end
 
   def new
-    @strategy = Strategies.new
+    @strategy = Strategy.new
   end
 
   def create
-    @strategy = Strategies.new(strategy_params)
+    @strategy = Strategy.new(strategy_params)
     if @strategy.save
       redirect_to @strategy
     else
