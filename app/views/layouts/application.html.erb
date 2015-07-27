@@ -2,24 +2,33 @@
 <html>
 <head>
   <title>Bitvestr</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,300italic,300,100italic,100,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "#{key}" %>
+  <% end %>
+
   <header class="outer-container">
     <header class="inner-container">
       <h1>Bitvestr</h1>
+      <aside class="session">
+        <% if current_user %>
+          You are logged in as <strong><%= current_user.email %></strong>.
+          <%= link_to "Log out", logout_path(:current), method: :delete %>
+        <% else %>
+          <%= link_to "Log in", login_path %>
+        <% end %>
+      </aside>
     </header>
   </header>
 
   <section class="outer-container">
     <section class="inner-container">
-      <% flash.each do |key, value| %>
-        <%= content_tag :div, value, class: "#{key}" %>
-      <% end %>
-
       <%= yield %>
     </section>
   </section>
