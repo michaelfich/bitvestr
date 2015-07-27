@@ -1,1 +1,13 @@
 <h2>Strategies</h2>
+
+<% if @strategies %>
+  <ul class="strategies">
+    <% @strategies.each do |strategy| %>
+      <li class="strategy"><%= link_to strategy.name, strategy %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if current_user %>
+  <%= link_to "Add new strategy", new_strategy_path, class: 'button' %>
+<% end %>

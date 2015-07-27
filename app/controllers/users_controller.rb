@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      auto_login(@user)
       flash[:notice] = "Thank you for signing up."
       redirect_to :root
     else

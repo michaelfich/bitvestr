@@ -41,7 +41,11 @@ div.field {
   }
 }
 
+.button,
 button {
+  display: inline-block;
+  font-size: 10pt;
+  margin: 5px 0;
   padding: 4px 16px;
   line-height: 2;
   border: none;
@@ -49,4 +53,5 @@ button {
   background: rgba(30,136,229,1);
   border-radius: 5px;
   color: white;
+  text-decoration: none;
 }
