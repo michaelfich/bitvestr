@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  interval: 1
+  last_price: 1.5
+  volume: 1.5
+
+two:
+  interval: 1
+  last_price: 1.5
+  volume: 1.5
