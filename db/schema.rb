@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728174258) do
+ActiveRecord::Schema.define(version: 20150728175737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150728174258) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.boolean  "action"
+    t.integer  "period"
   end
 
   add_index "indicators", ["strategy_id"], name: "index_indicators_on_strategy_id", using: :btree

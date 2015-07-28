@@ -3,6 +3,21 @@
   <%= f.text_field :name %>
 </div>
 <div class="field">
+  <%= f.label :period %>
+  <%= f.number_field :period %>
+</div>
+<div class="field">
   <%= f.label :value %>
   <%= f.text_field :value %>
+</div>
+<div class="field">
+  <%= f.label :action %>
+  <label>
+    <%= f.radio_button :action, true %>
+    <span>Buy</span>
+  </label>
+  <label>
+    <%= f.radio_button :action, false %>
+    <span>Sell</span>
+  </label>
 </div>

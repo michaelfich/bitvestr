@@ -66,6 +66,7 @@ form {
   div.strategy,
   div.indicators {
     width: 50%;
+    overflow: auto;
     div.field {
       margin: 0 0 10px;
       label {
@@ -78,17 +79,12 @@ form {
       }
     }
   }
-  div.strategy {
-    float: left;
-    // background: yellow;
-  }
-  div.indicators {
-    float: right;
-    // background: orange;
-  }
+  div.strategy { float: left; }
+  div.indicators { float: right; }
 }
 
-.button,
+div.button a,
+a.button,
 button {
   display: inline-block;
   font-size: 10pt;
@@ -101,4 +97,6 @@ button {
   border-radius: 5px;
   color: white;
   text-decoration: none;
+  outline: none;
+  cursor: pointer;
 }

@@ -7,6 +7,7 @@ class StrategiesController < ApplicationController
 
   def new
     @strategy = Strategy.new
+    @strategy.indicators.build
   end
 
   def create
