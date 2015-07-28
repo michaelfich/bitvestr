@@ -1,0 +1,28 @@
+<%= form_for @strategy do |f| %>
+  <div class="strategy">
+    <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+    <%= f.label :interval, "Tick Interval" %>
+    <%= f.number_field :interval %>
+    </div>
+  </div>
+
+  <div class="indicators">
+    <%= f.fields_for :indicators do |i| %>
+      <%= render 'indicator_fields', f: i %>
+    <% end %>
+    <div class="button">
+      <%= link_to_add_association 'Add Another Indicator', f, :indicators %>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <div class="field">
+      <%= f.button "Save" %>
+    </div>
+  </div>
+<% end %>
