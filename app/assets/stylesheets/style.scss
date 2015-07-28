@@ -3,15 +3,47 @@ html {
   font-size: 16px;
 }
 
-div.notice {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.inner-container {
+  overflow: auto;
+}
+
+div.notice,
+div.alert {
   width: 100%;
-  text-align: center;
-  color: white;
-  background: rgba(139,195,74,0.5);
+  height: 75px;
+  line-height: 75px;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 30px 0;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+div.notice {
+  background: rgba(124,179,66,1);
+  border-bottom: 5px solid rgba(85,139,47,1);
+}
+
+div.alert {
+  background: rgba(198,40,40,1);
+  border-bottom: 5px solid rgba(183,28,28,1);
+}
+
+header.outer-container {
+  header.inner-container {
+    line-height: 80px;
+    height: 80px;
+    h1 {
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
 .outer-container {
@@ -30,14 +62,29 @@ div.notice {
   }
 }
 
-div.field {
-  margin: 10px 0;
-  label {
-    display: block;
+form {
+  div.strategy,
+  div.indicators {
+    width: 50%;
+    div.field {
+      margin: 0 0 10px;
+      label {
+        display: block;
+      }
+      input {
+        padding: 8px 12px;
+        outline: none;
+        font-size: 1.25rem;
+      }
+    }
   }
-  input {
-    padding: 6px;
-    outline: none;
+  div.strategy {
+    float: left;
+    // background: yellow;
+  }
+  div.indicators {
+    float: right;
+    // background: orange;
   }
 }
 

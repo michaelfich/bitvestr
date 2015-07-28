@@ -1,26 +1,28 @@
 <h1>Create a new Strategy</h1>
 
 <%= form_for @strategy do |f| %>
-  <div class="field">
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-  <%= f.label :interval %>
-  <%= f.text_field :interval %>
-  </div>
-
   <div class="indicators">
     <%= f.fields_for :indicators do |i| %>
       <%= render 'indicator_fields', f: i %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'Add Another Indicator', f, :indicators %>
+      <%= link_to_add_association 'Add Indicator', f, :indicators %>
     </div>
   </div>
 
-  <div class="field">
-    <%= f.button "Save" %>
+  <div class="strategy">
+    <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+    <%= f.label :interval %>
+    <%= f.text_field :interval %>
+    </div>
+
+    <div class="field">
+      <%= f.button "Save" %>
+    </div>
   </div>
 <% end %>

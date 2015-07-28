@@ -3,6 +3,6 @@
 
 $(document).on('ready page:load', function() {
   setTimeout(function() {
-    $("div.notice").fadeOut();
-  }, 5000);
+    $(".notice, .alert").fadeOut(1000);
+  }, 2400);
 })
