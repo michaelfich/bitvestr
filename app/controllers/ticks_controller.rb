@@ -1,5 +1,11 @@
 class TicksController < ApplicationController
   def index
-   render json: Tick.last(50).to_json
+    count = if params['count']
+      params['count']
+    else
+      100
+    end
+
+   render json: Tick.last(count).to_json
   end
 end
