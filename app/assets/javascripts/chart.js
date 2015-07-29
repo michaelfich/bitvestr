@@ -36,11 +36,14 @@ function drawBasic(ticks) {
 }
 
 function convertJSONtoArray(data) {
-  var results = [];
+  var outerArr = [], innerArr = [];
+
   for (var i=0; i < 50; i++) {
-    results.push([i, data['i'].last_price]);
+    innerArr = [i, data[i].last_price];
+    outerArr.push(innerArr);
   }
-  return results;
+
+  return outerArr;
 }
 
 $(document).on('ready page:load', function() {
