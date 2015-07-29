@@ -15,8 +15,10 @@ class StrategiesController < ApplicationController
     @strategy = Strategy.new(strategy_params)
     @strategy.user = current_user
     if @strategy.save
+      flash[:notice] = "Successfully created your #{@strategy.name} investment strategy."
       redirect_to @strategy
     else
+      flash[:alert] = "Unable to create strategy"
       render :new
     end
   end
@@ -37,6 +39,7 @@ class StrategiesController < ApplicationController
       flash[:notice] = "Successfully updated your #{@strategy.name} investment strategy."
       redirect_to @strategy
     else
+      flash[:alert] = "Unable to save changes to #{@strategy.name} strategy"
       render :edit
     end
   end

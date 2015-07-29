@@ -1,5 +1,4 @@
-<div class="field">
-  <%= f.label :action %>
+<div class="indicator">
   <label>
     <%= f.radio_button :action, true %>
     <span>Buy</span>
@@ -8,20 +7,16 @@
     <%= f.radio_button :action, false %>
     <span>Sell</span>
   </label>
-</div>
-<div class="field">
+
   <%= f.label :name, "Indicator Name" %>
   <%= f.text_field :name %>
-</div>
-<div class="field">
+
   <%= f.label :period, "Indicator Period in Ticks" %>
   <%= f.number_field :period, { min: 1, value: 1 } %>
-</div>
-<div class="field">
+
   <%= f.label :comparison %>
   <%= f.select :comparison, @comparisons %>
-</div>
-<div class="field">
+
   <%= f.label :value %>
   <%= f.text_field :value %>
 </div>

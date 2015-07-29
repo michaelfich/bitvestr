@@ -1,6 +1,6 @@
 html {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 body {
@@ -48,12 +48,10 @@ header.outer-container {
 
 .outer-container {
   width: 100%;
-
   .inner-container {
     margin: 0 auto;
     width: 960px;
     position: relative;
-
     aside.session {
       position: absolute;
       top: 0;
@@ -62,41 +60,38 @@ header.outer-container {
   }
 }
 
-form {
+form.strategy {
   div.strategy,
-  div.indicators {
-    width: 50%;
-    overflow: auto;
-    div.field {
-      margin: 0 0 10px;
-      label {
-        display: block;
-      }
-      input {
-        padding: 8px 12px;
-        outline: none;
-        font-size: 1.25rem;
-      }
-    }
+  div.indicator,
+  div.buttons {
+    display: block;
+    margin: 10px 0;
   }
-  div.strategy { float: left; }
-  div.indicators { float: right; }
+  div.field {
+    display: inline;
+  }
 }
 
-div.button a,
-a.button,
+div.buttons a,
 button {
   display: inline-block;
-  font-size: 10pt;
-  margin: 5px 0;
-  padding: 4px 16px;
-  line-height: 2;
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 8px 12px;
+  vertical-align: middle;
+  white-space: nowrap;
   border: none;
-  border-bottom: 5px solid rgba(21,101,192,1);
-  background: rgba(30,136,229,1);
   border-radius: 5px;
   color: white;
   text-decoration: none;
   outline: none;
   cursor: pointer;
+  &.blue {
+    background: rgba(30,136,229,1);
+    border-bottom: 5px solid rgba(21,101,192,1);
+  }
+  &.green {
+    background: rgba(76,175,80,1);
+    border-bottom: 5px solid rgba(46,125,50,1);
+  }
 }
