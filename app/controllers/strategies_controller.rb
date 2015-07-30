@@ -55,13 +55,4 @@ class StrategiesController < ApplicationController
                 :id, :name, :value, :comparison, :period, :action, :_destroy
               ])
   end
-
-  def get_comparators
-    counter = 0;
-    Indicator::COMPARATORS.inject([]) do |result, value|
-      result.push([value, counter])
-      counter += 1;
-      result
-    end
-  end
 end

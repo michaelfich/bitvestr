@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :ticks, only: [:index]
 
+  namespace :strategy do
+    resources :crossovers, :momentums, :thresholds, only: [:new, :create]
+  end
+
   resources :strategies
 end

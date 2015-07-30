@@ -1,0 +1,9 @@
+<div class="indicator">
+  <%= f.hidden_field 'action', value: 'buy' %>
+
+  <%= f.label :name, "Indicator Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :period, "Indicator Period in Ticks" %>
+  <%= f.number_field :period, { min: 1, value: 1 } %>
+</div>

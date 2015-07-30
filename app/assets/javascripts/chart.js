@@ -49,7 +49,7 @@ function convertJSONtoArray(data) {
 $(document).on('ready page:load', function() {
   function getChart() {
     $.ajax({
-      url: 'http://localhost:3000/ticks?count=60',
+      url: 'http://localhost:3000/ticks',
       method: 'get',
       dataType: 'json'
     }).done(function(ticksJSON) {
