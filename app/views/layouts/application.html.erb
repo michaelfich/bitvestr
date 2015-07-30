@@ -34,7 +34,7 @@
       </ul>
       <ul class="right">
         <% if current_user %>
-          <li><%= link_to 'Sign out', logout_path %></li>
+          <li><%= link_to 'Sign out', logout_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'Sign in', login_path %></li>
           <li><%= link_to 'Create an account', new_user_path %></li>
@@ -54,7 +54,5 @@
       © Lucas Zarnett & Michael Fich 2015
     </footer>
   </footer>
-
-
 </body>
 </html>

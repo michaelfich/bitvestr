@@ -7,7 +7,9 @@ class StrategiesController < ApplicationController
 
   def new
     @strategy = Strategy.new
-    @strategy.indicators.build
+    (1..4).each do |strategy|
+      @strategy.indicators.build
+    end
     @comparisons = get_comparators
   end
 

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create]
   resources :users, only: [:new, :create]
-  resources :strategies
   resources :ticks, only: [:index]
+
+  resources :strategies
 end

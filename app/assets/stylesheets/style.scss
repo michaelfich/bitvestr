@@ -10,6 +10,11 @@ body {
   color: #eee;
 }
 
+a {
+  text-decoration: none;
+  color: #222;
+}
+
 header.outer-container {
   height: 90px;
   padding-top: 5px;
@@ -29,13 +34,6 @@ section.outer-container {
 footer.outer-container {
   padding: 10px 0 70px;
   background: #333;
-}
-
-a {
-  color: lime;
-  &:hover {
-    text-decoration: none;
-  }
 }
 
 .inner-container {

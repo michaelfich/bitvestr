@@ -1,5 +1,6 @@
 class TicksController < ApplicationController
   def index
-    render json: Tick.last(120).to_json
+    count = params[:count] || 120
+    render json: Tick.last(count).to_json
   end
 end
