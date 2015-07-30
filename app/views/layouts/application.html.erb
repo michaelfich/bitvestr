@@ -17,17 +17,31 @@
   <header class="outer-container">
     <header class="inner-container">
       <h1>Bitvestr</h1>
-      <aside class="session">
-        <% if current_user %>
-          You are logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to "Log out", logout_path(:current), method: :delete %>
-        <% else %>
-          <%= link_to "Log in", login_path %> or
-          <%= link_to "Sign up", new_user_path %>
-        <% end %>
-      </aside>
-    </header>
+
+      <% if current_user %>
+        <aside class="session">
+          You are logged in as <strong><%= current_user.email %></strong>
+        </aside>
+      <% end %>
+     </header>
   </header>
+
+  <nav class="outer-container">
+    <nav class="inner-container">
+      <ul class="left">
+        <li><%= link_to 'Home', root_url %></li>
+        <li><%= link_to 'Strategies', strategies_path %></li>
+      </ul>
+      <ul class="right">
+        <% if current_user %>
+          <li><%= link_to 'Sign out', logout_path %></li>
+        <% else %>
+          <li><%= link_to 'Sign in', login_path %></li>
+          <li><%= link_to 'Create an account', new_user_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </nav>
 
   <section class="outer-container">
     <section class="inner-container">

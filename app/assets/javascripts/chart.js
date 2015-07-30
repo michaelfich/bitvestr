@@ -1,17 +1,31 @@
 google.load('visualization', '1', { packages: ['corechart', 'line'] });
 
-function drawBasic(ticks) {
+function drawGraph(ticks) {
   var data = new google.visualization.DataTable();
   data.addColumn('datetime', 'Timestamp');
   data.addColumn('number', 'Value');
   data.addRows(ticks);
 
   var options = {
-    hAxis: { title: 'Date and Time' },
-    vAxis: { title: 'Value of Bitcoin' },
+    hAxis: {
+      title: 'Timeline'
+    },
+    vAxis: {
+      title: 'Value of Bitcoin',
+      viewWindowMode: 'explicit',
+      // viewWindow: {
+      //   min: 290,
+      //   max: 285,
+      // },
+      format: 'currency',
+    },
     lineWidth: 3,
-    backgroundColor: { fill: 'transparent' },
-    legend: { position: 'none' }
+    backgroundColor: {
+      fill: 'transparent'
+    },
+    legend: {
+      position: 'none'
+    }
   };
 
   var chart = new google.visualization.LineChart(document.getElementById('chart'));
@@ -39,6 +53,6 @@ $(document).on('ready page:load', function() {
     dataType: 'json'
   }).done(function(ticksJSON) {
     var ticksArr = convertJSONtoArray(ticksJSON);
-    google.setOnLoadCallback(drawBasic(ticksArr));
+    google.setOnLoadCallback(drawGraph(ticksArr));
   });
 });

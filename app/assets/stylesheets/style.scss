@@ -11,9 +11,15 @@ body {
 }
 
 header.outer-container {
+  height: 90px;
   padding-top: 5px;
-  border-bottom: 5px solid rgba(25,25,25,1);
+  box-sizing: border-box;
   background: #333;
+}
+
+nav.outer-container {
+  background: rgba(150,150,150,1);
+  box-shadow: 2px 2px 2px rgba(0,0,0,1);
 }
 
 section.outer-container {
@@ -21,7 +27,7 @@ section.outer-container {
 }
 
 footer.outer-container {
-  padding: 20px 0;
+  padding: 10px 0 70px;
   background: #333;
 }
 
@@ -65,19 +71,14 @@ div.alert {
     margin: 0 auto;
     width: 960px;
     position: relative;
-    aside.session {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
   }
 }
 
 header.outer-container {
   header.inner-container {
-    line-height: 80px;
     height: 80px;
     h1 {
+      line-height: 80px;
       margin: 0;
       padding: 0;
       font-family: 'Oleo Script', cursive;
@@ -86,6 +87,13 @@ header.outer-container {
       text-shadow:
         2px 2px 0 #333,
         5px 5px 0 #555;
+    }
+    aside.session {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 0.9rem;
+      // background: green;
     }
   }
 }
@@ -146,6 +154,7 @@ input[type='number'] {
   padding-left: 10px;
 }
 
+a.button,
 div.buttons a,
 button {
   display: inline-block;
@@ -177,5 +186,5 @@ button {
 #chart {
   width: 960px;
   height: 480px;
-  margin: 20px auto;
+  margin: 0 auto 20px;
 }
