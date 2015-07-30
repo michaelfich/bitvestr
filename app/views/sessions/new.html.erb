@@ -1,8 +1,8 @@
 <h2>Sign in</h2>
 
-<%= form_tag sessions_path, method: :post do %>
+<%= form_tag sessions_path, method: :post, class: 'user' do %>
   <div class="field">
-    <%= label_tag :email %>
+    <%= label_tag :email, 'Email Address' %>
     <%= email_field_tag :email %>
   </div>
 

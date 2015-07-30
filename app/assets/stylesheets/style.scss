@@ -10,12 +10,19 @@ body {
   color: #eee;
 }
 
+header.outer-container {
+  padding-top: 5px;
+  border-bottom: 5px solid rgba(25,25,25,1);
+  background: #333;
+}
+
 section.outer-container {
   background: image-url('light_noise_diagonal.png') repeat center center fixed;
 }
 
 footer.outer-container {
-  padding-top: 20px;
+  padding: 20px 0;
+  background: #333;
 }
 
 a {
@@ -32,8 +39,8 @@ a {
 div.notice,
 div.alert {
   width: 100%;
-  height: 75px;
-  line-height: 75px;
+  height: 85px;
+  line-height: 85px;
   position: fixed;
   top: 0;
   left: 0;
@@ -50,6 +57,20 @@ div.notice {
 div.alert {
   background: rgba(198,40,40,1);
   border-bottom: 5px solid rgba(183,28,28,1);
+}
+
+.outer-container {
+  width: 100%;
+  .inner-container {
+    margin: 0 auto;
+    width: 960px;
+    position: relative;
+    aside.session {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
 }
 
 header.outer-container {
@@ -69,17 +90,9 @@ header.outer-container {
   }
 }
 
-.outer-container {
-  width: 100%;
-  .inner-container {
-    margin: 0 auto;
-    width: 960px;
-    position: relative;
-    aside.session {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
+section.outer-container {
+  section.inner-container {
+    color: #333;
   }
 }
 
@@ -93,6 +106,44 @@ form.strategy {
   div.field {
     display: inline;
   }
+}
+
+form.user {
+  margin-bottom: 18px;
+  div.field {
+    margin: 15px 0;
+    label {
+      display: inline-block;
+      width: 120px;
+    }
+    input {
+      margin: 0 10px;
+      width: 200px;
+      font-size: 1rem;
+    }
+  }
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'] {
+  background: none;
+  border: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(200,200,200,1);
+  outline: none;
+  &:focus {
+    border-bottom-color: rgba(20,20,20,1);
+  }
+}
+
+input[type='number'] {
+  box-sizing: border-box;
+  width: 50px;
+  text-align: center;
+  padding-left: 10px;
 }
 
 div.buttons a,
@@ -109,13 +160,17 @@ button {
   text-decoration: none;
   outline: none;
   cursor: pointer;
+  background: rgba(200,200,200,1);
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(100,100,100,1);
   &.blue {
     background: rgba(30,136,229,1);
-    border-bottom: 5px solid rgba(21,101,192,1);
+    border-bottom-color: rgba(21,101,192,1);
   }
   &.green {
     background: rgba(76,175,80,1);
-    border-bottom: 5px solid rgba(46,125,50,1);
+    border-bottom-color: rgba(46,125,50,1);
   }
 }
 
