@@ -1,3 +1,7 @@
+$blue: #29B6F6;
+$darkblue: #1976D2;
+$lightgray: #ecf0f1;
+
 html {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -6,7 +10,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #333;
+  background: $blue;
   color: #eee;
 }
 
@@ -19,21 +23,22 @@ header.outer-container {
   height: 90px;
   padding-top: 5px;
   box-sizing: border-box;
-  background: #333;
+  background: $blue;
 }
 
 nav.outer-container {
-  background: rgba(150,150,150,1);
+  background: #FFC107;
   box-shadow: 2px 2px 2px rgba(0,0,0,1);
 }
 
 section.outer-container {
-  background: image-url('light_noise_diagonal.png') repeat center center fixed;
+  // background: image-url('light_noise_diagonal.png') repeat center center fixed;
+  background: #E0E0E0;
 }
 
 footer.outer-container {
   padding: 10px 0 70px;
-  background: #333;
+  background: $blue;
 }
 
 .inner-container {
@@ -83,8 +88,8 @@ header.outer-container {
       font-size: 3.5em;
       font-weight: normal;
       text-shadow:
-        2px 2px 0 #333,
-        5px 5px 0 #555;
+        2px 2px 0 $blue,
+        4px 4px 4px $darkblue;
     }
     aside.session {
       position: absolute;
@@ -93,12 +98,6 @@ header.outer-container {
       font-size: 0.9rem;
       // background: green;
     }
-  }
-}
-
-section.outer-container {
-  section.inner-container {
-    color: #333;
   }
 }
 
