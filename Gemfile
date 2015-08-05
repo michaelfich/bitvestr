@@ -33,13 +33,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
+
+gem 'capistrano-bundler'
+
+# if you are using RBENV
+gem 'capistrano-rbenv', "~> 2.0" 
+
+# Use the Unicorn app server
+gem 'unicorn'
 
 gem 'sorcery'
 
 gem 'httparty', '~> 0.13.5'
 
 gem 'whenever', require: false
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
