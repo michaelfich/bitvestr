@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create]
   resources :users, only: [:new, :create]
-  resources :ticks, only: [:index]
+  # resources :ticks, only: [:index]
+
+  post 'ticks' => 'ticks#index'
 
   namespace :strategy do
     resources :crossovers, :momentums, :thresholds, only: [:new, :create, :show]
