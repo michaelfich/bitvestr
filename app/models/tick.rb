@@ -1,11 +1,7 @@
 class Tick < ActiveRecord::Base
-  def less_than(start, finish)
-    self.moving_avg(start) < self.moving_avg(finish)
-  end
-
   def moving_avg(range)
     records = last_records(range)
-    sum_value(records) / range
+    sum_value(records) / range.to_i
   end
 
   # def sma(array)

@@ -60,7 +60,7 @@ function convertJSONtoArray(data) {
 $(document).on('ready page:load', function() {
   function getChart() {
     $.ajax({
-      url: 'http://localhost:3000/ticks?count=120',
+      url: 'http://localhost:3000/ticks?count=120&b1_calc=moving_avg&b1_range=7&b2_calc=moving_avg&b2_range=30',
       method: 'get',
       dataType: 'json'
     }).done(function(ticksJSON) {
