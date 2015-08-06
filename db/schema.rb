@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 20150730201759) do
   create_table "strategies", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "interval"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "name"
-    t.string   "type"
+    t.string   "classification"
   end
 
   add_index "strategies", ["user_id"], name: "index_strategies_on_user_id", using: :btree

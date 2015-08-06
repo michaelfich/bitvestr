@@ -15,8 +15,11 @@ body {
 }
 
 a {
-  text-decoration: none;
-  color: #222;
+  text-decoration: underline;
+  color: #0288D1;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 header.outer-container {
@@ -32,8 +35,9 @@ nav.outer-container {
 }
 
 section.outer-container {
-  // background: image-url('light_noise_diagonal.png') repeat center center fixed;
-  background: #E0E0E0;
+  background: #FFF;
+  color: #333;
+  padding: 10px 0;
 }
 
 footer.outer-container {
@@ -178,10 +182,4 @@ button {
     background: rgba(76,175,80,1);
     border-bottom-color: rgba(46,125,50,1);
   }
-}
-
-#chart {
-  width: 960px;
-  height: 480px;
-  margin: 0 auto 20px;
 }

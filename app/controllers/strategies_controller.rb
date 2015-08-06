@@ -10,7 +10,7 @@ class StrategiesController < ApplicationController
     (1..4).each do |strategy|
       @strategy.indicators.build
     end
-    @comparisons = get_comparators
+    @comparisons = Indicator::COMPARATORS
   end
 
   def create
@@ -31,7 +31,7 @@ class StrategiesController < ApplicationController
 
   def edit
     @strategy = Strategy.find(params[:id])
-    @comparisons = get_comparators
+    @comparisons = Indicator::COMPARATORS
   end
 
   def update

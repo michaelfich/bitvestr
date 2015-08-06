@@ -10,23 +10,36 @@ class Strategy::CrossoversController < ApplicationController
         'sell'
       end
     end
-    @comparisons = get_comparators
+    @comparisons = Indicator::COMPARATORS
   end
 
   def create
+    @strategy = Strategy.new(strategy_params)
+    @strategy.user = current_user
+    @strategy.type = "crossover"
+    if @strategy.save
+      flash[:notice] = "Successfully created your #{@strategy.name} investment strategy."
+      redirect_to @strategy
+    else
+      flash[:alert] = "Unable to create strategy"
+      render :new
+    end
+  end
+
+  def show
+    @strategy = Strategy.find(params[:id])
+    @buy_low = @strategy.indicators.first
+    @buy_high = @strategy.indicators.second
+    @sell_low = @strategy.indicators.third
+    @sell_high = @strategy.indicators.fourth
   end
 
   private
   def crossover_params
-    # params.require(:)
-  end
-
-  def get_comparators
-    counter = 0;
-    Indicator::COMPARATORS.inject([]) do |result, value|
-      result.push([value, counter])
-      counter += 1;
-      result
-    end
+    params.require(:strategy).permit(:name, :interval,
+      indicators_attributes: [
+        :id, :name, :value, :comparison, :period, :action, :_destroy
+      ]
+    )
   end
 end

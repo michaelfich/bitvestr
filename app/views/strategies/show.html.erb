@@ -1,4 +1,25 @@
 <h2>Strategy: <%= @strategy.name %></h2>
 
+<p>
+  <b>Classification:</b>
+  <%= @strategy.classification.capitalize %>
+</p>
+
+<h3>Buy Parameters</h3>
+
+<h4>Low:</h4>
+<p><%= @buy_low.name %>(<%= @buy_low.value %>)</p>
+
+<h4>High:</h4>
+<p><%= @buy_high.name %>(<%= @buy_high.value %>)</p>
+
+<h3>Sell Parameters</h3>
+
+<h4>Low:</h4>
+<p><%= @sell_low.name %>(<%= @sell_low.value %>)</p>
+
+<h4>High:</h4>
+<p><%= @sell_high.name %>(<%= @sell_high.value %>)</p>
+
 <%= link_to 'Back', strategies_path %>
 <%= link_to 'Edit', edit_strategy_path(@strategy) %>

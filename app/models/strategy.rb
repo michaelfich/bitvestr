@@ -3,4 +3,6 @@ class Strategy < ActiveRecord::Base
   has_many :indicators
 
   accepts_nested_attributes_for :indicators, reject_if: :all_blank, allow_destroy: true
+
+  CLASSIFICATIONS = ["crossover", "momentum", "threshold"]
 end

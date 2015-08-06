@@ -1,0 +1,21 @@
+<div id="strategy">
+  <p>
+    <h2><%= @strategy.name %></h2>
+    A <%= @strategy.classification.capitalize %> Strategy
+  </p>
+
+  <p>
+    <%= link_to 'Back', strategies_path %>
+    <%= link_to 'Edit', edit_strategy_path(@strategy) %>
+  </p>
+
+  <p>
+    Buy when the <span class="calculation"><%= @buy_low.name %></span>(<%= @buy_low.value.to_i %>) is less than the <span class="calculation"><%= @buy_high.name %></span>(<%= @buy_high.value.to_i %>)
+  </p>
+
+  <p>
+    Sell when the <span class="calculation"><%= @sell_low.name %></span>(<%= @sell_low.value.to_i %>) is less than the <span class="calculation"><%= @sell_high.name %></span>(<%= @sell_high.value.to_i %>)
+  </p>
+</div>
+
+<div id="chart"></div>

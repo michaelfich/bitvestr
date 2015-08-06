@@ -1,3 +1,4 @@
+# whenever --set environment=development --update-crontab
 namespace :bitcoin do
   desc "TODO"
   task get: :environment do
@@ -11,5 +12,4 @@ namespace :bitcoin do
 
     Tick.create(tick_params)
   end
-
 end

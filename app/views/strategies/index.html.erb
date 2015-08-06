@@ -1,15 +1,20 @@
 <h2>Strategies</h2>
 
+<% if current_user %>
+  <%= link_to "New Crossover Strategy", new_strategy_crossover_path, class: 'button blue' %>
+<% end %>
+
 <div class="strategies">
   <% if @strategies %>
     <ul class="strategies">
       <% @strategies.each do |strategy| %>
-        <li class="strategy"><%= link_to strategy.name, strategy %></li>
+        <li class="strategy">
+          <span class="classification">
+            <%= strategy.classification.capitalize %>
+          </span>
+          <%= link_to strategy.name, strategy_crossover_path(strategy) %>
+        </li>
       <% end %>
     </ul>
-  <% end %>
-
-  <% if current_user %>
-    <%= link_to "Add new strategy", new_strategy_path, class: 'button blue' %>
   <% end %>
 </div>

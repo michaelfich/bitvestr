@@ -7,12 +7,23 @@ function drawGraph(ticks) {
   data.addRows(ticks);
 
   var options = {
+    chartArea: {
+      // left:0,
+      // top:10,
+      // width: '100%',
+      // height: '100%',
+    },
+    crosshair: {
+      trigger: 'focus',
+      orientation: 'vertical',
+    },
     hAxis: {
       // title: 'Timeline'
     },
     vAxis: {
       // title: 'Value of Bitcoin',
       viewWindowMode: 'explicit',
+      // textPosition: 'in',
       // viewWindow: {
       //   min: 290,
       //   max: 285,
@@ -28,7 +39,7 @@ function drawGraph(ticks) {
     }
   };
 
-  var chart = new google.visualization.LineChart(document.getElementById('chart'));
+  var chart = new google.visualization.AreaChart(document.getElementById('chart'));
   chart.draw(data, options);
 }
 
@@ -49,12 +60,12 @@ function convertJSONtoArray(data) {
 $(document).on('ready page:load', function() {
   function getChart() {
     $.ajax({
-      url: 'http://localhost:3000/ticks',
+      url: 'http://localhost:3000/ticks?count=120',
       method: 'get',
       dataType: 'json'
     }).done(function(ticksJSON) {
-      var ticksArr = convertJSONtoArray(ticksJSON);
-      google.setOnLoadCallback(drawGraph(ticksArr));
+      var ticksArr = convertJSONtoArray( ticksJSON );
+      google.setOnLoadCallback( drawGraph(ticksArr) );
       setTimeout( getChart, 30000 );
     });
   };

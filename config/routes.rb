@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :ticks, only: [:index]
 
   namespace :strategy do
-    resources :crossovers, :momentums, :thresholds, only: [:new, :create]
+    resources :crossovers, :momentums, :thresholds, only: [:new, :create, :show]
   end
 
   resources :strategies
