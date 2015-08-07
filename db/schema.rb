@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730201759) do
+ActiveRecord::Schema.define(version: 20150807041428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150730201759) do
   create_table "indicators", force: :cascade do |t|
     t.integer  "strategy_id"
     t.string   "name"
-    t.decimal  "value",       precision: 12, scale: 8
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "value"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.boolean  "action"
     t.integer  "period"
     t.integer  "comparison"

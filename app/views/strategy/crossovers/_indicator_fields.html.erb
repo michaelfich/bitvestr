@@ -4,6 +4,6 @@
   <%= f.label :name, "Indicator Name" %>
   <%= f.text_field :name %>
 
-  <%= f.label :period, "Indicator Period in Ticks" %>
-  <%= f.number_field :period, { min: 1, value: 1 } %>
+  <%= f.label :value, "Value" %>
+  <%= f.number_field :value, { min: 1, max: 500 } %>
 </div>
