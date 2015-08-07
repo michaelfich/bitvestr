@@ -4,14 +4,33 @@ class Tick < ActiveRecord::Base
     sum_value(records) / range.to_i
   end
 
-  # def sma(array)
-  #   array.sum / array.count
+
+  def exponential_moving_avg(range)
+    current = last_records(range).first
+    prev_ema = previous_ema(range).last
+    multiplier = relevant_multiplier(range)
+    (current.last_price - prev_ema) * multiplier + prev_ema
+
+  end
+
+  # def test(range)
+  #   relevant_records(range)
   # end
 
-  # def ema(array)
-  #   multiplier =  2 / (array.sum + 1)
-  #   # array.last
+  # def test2(range)
+  #   furthest_moving_avg(range)
   # end
+
+  # def test3(range)
+  #   previous_ema(range)
+  # end
+
+  # def real_test(range)
+  #   test(range)
+  #   test2(range)
+  #   test3(range)
+  # end
+
 
   # def vwap(array)
   #   (array["price"].sum * array["volume"].sum) / array["volume"].sum
@@ -39,14 +58,56 @@ class Tick < ActiveRecord::Base
   # end
 
   private
-  def last_records(range)
-    offset = Tick.where(id: self.id..Tick.last.id).count - 1
-    Tick.order("id DESC").offset(offset).limit(range)
-  end
 
-  def sum_value(ticks)
-    ticks.inject(0) do |total, tick|
-      total += tick.last_price
+#SMA/General Use Methods
+
+    def last_records(range)
+      offset = Tick.where(id: self.id..Tick.last.id).count - 1
+      Tick.order("id DESC").offset(offset).limit(range)
     end
-  end
+
+    def sum_value(ticks)
+      ticks.inject(0) do |total, tick|
+        total += tick.last_price
+      end
+    end
+
+   #EMA Methods
+   def relevant_multiplier(range)
+    2.0 / (range.to_f + 1.0)
+   end
+
+    def relevant_records(range)
+      offset_array = (0..19)
+      record_array = []
+      offset_array.each do |num|
+        offset = Tick.where(id: self.id..Tick.last.id).count + num
+        record_array << Tick.order("id DESC").offset(offset).limit(range)
+      end
+      record_array
+    end
+
+    def furthest_moving_avg(range)
+      old_records = relevant_records(range)
+      records = old_records.last
+      sum_value(records) / range
+    end
+
+    def previous_ema(range)
+      avgs = []
+      avgs << furthest_moving_avg(range)
+      relevant = relevant_records(range).reverse
+      multiplier = relevant_multiplier(range)
+      relevant.drop(1)
+      relevant.each do |array|
+        x = ((array.first.last_price - avgs.last) * multiplier) + avgs.last
+        avgs << x
+      end 
+      avgs
+    end
+
+  
+  
+  
+
 end
