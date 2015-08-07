@@ -34,6 +34,10 @@ class Strategy::CrossoversController < ApplicationController
     @sell_high = @strategy.indicators.fourth
   end
 
+  def edit
+    @strategy = Strategy.find(params[:id])
+  end
+
   private
   def crossover_params
     params.require(:strategy).permit(:name, :interval,

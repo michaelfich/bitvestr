@@ -5,6 +5,29 @@ span.calculation {
 #strategy {
   width: 700px;
   margin: 0 auto;
+  div.legend {
+    p {
+      vertical-align: center;
+      line-height: 24px;
+    }
+    span.indicator {
+      display: block;
+      float: left;
+      height: 20px;
+      width: 20px;
+      margin-right: 8px;
+      background: red;
+      border-radius: 15px;
+      &.buy {
+        border: 2px solid green;
+        background: #b3d9b3;
+      }
+      &.sell {
+        border: 2px solid blue;
+        background: #b3b3ff;
+      }
+    }
+  }
 }
 
 #chart {

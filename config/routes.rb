@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post 'ticks' => 'ticks#index'
 
   namespace :strategy do
-    resources :crossovers, :momentums, :thresholds, only: [:new, :create, :show]
+    resources :crossovers, :momentums, :thresholds, only: [:new, :create, :show, :edit, :update]
   end
 
   resources :strategies
