@@ -1,7 +1,7 @@
 class Strategy::CrossoversController < ApplicationController
   def new
     @strategy = Strategy.new
-    @strategy.type = "crossover"
+    @strategy.classification = "crossover"
     (1..4).each do |n|
       indicator = @strategy.indicators.build
       indicator.action = if n < 3
@@ -16,7 +16,7 @@ class Strategy::CrossoversController < ApplicationController
   def create
     @strategy = Strategy.new(strategy_params)
     @strategy.user = current_user
-    @strategy.type = "crossover"
+    @strategy.classification = "crossover"
     if @strategy.save
       flash[:notice] = "Successfully created your #{@strategy.name} investment strategy."
       redirect_to @strategy
@@ -36,6 +36,9 @@ class Strategy::CrossoversController < ApplicationController
 
   def edit
     @strategy = Strategy.find(params[:id])
+    @strategy.indicators.each do |indicator|
+      indicator.value = indicator.value.to_i
+    end
   end
 
   private
