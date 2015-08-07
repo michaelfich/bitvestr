@@ -12,14 +12,21 @@
   <div class="legend">
     <p>
       <span class="indicator buy"></span>
-      Buy when the <strong><%= @buy_low.name %>(<%= @buy_low.value.to_i %>)</strong> is less than the <strong><%= @buy_high.name %>(<%= @buy_high.value.to_i %>)</strong>
+      Buy when the <strong><%= @buy_low.name %>(<span id="bl_range"><%= @buy_low.value.to_i %></span>)</strong> is less than the <strong><%= @buy_high.name %>(<span id="bh_range"><%= @buy_high.value.to_i %></span>)</strong>
     </p>
 
     <p>
       <span class="indicator sell"></span>
-      Sell when the <strong><%= @sell_low.name %>(<%= @sell_low.value.to_i %>)</strong> is less than the <strong><%= @sell_high.name %>(<%= @sell_high.value.to_i %>)</strong>
+      Sell when the <strong><%= @sell_low.name %>(<span id="sl_range"><%= @sell_low.value.to_i %></span>)</strong> is less than the <strong><%= @sell_high.name %>(<span id="sh_range"><%= @sell_high.value.to_i %></span>)</strong>
+    </p>
+
+    <p>
+      <span class="indicator none"></span>
+      Neither sell or buy.
     </p>
   </div>
 </div>
 
 <div id="chart"></div>
+
+<%= javascript_include_tag 'chart/chart', 'data-turbolinks-track' => true %>

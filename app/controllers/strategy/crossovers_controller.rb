@@ -10,18 +10,23 @@ class Strategy::CrossoversController < ApplicationController
         'sell'
       end
     end
+    @indicators = @strategy.indicators
     @comparisons = Indicator::COMPARATORS
+    @path = strategy_crossovers_path(@strategy)
+    @method = :post
   end
 
   def create
-    @strategy = Strategy.new(strategy_params)
+    @strategy = Strategy.new(crossover_params)
     @strategy.user = current_user
     @strategy.classification = "crossover"
     if @strategy.save
       flash[:notice] = "Successfully created your #{@strategy.name} investment strategy."
-      redirect_to @strategy
+      redirect_to strategy_crossover_path(@strategy)
     else
       flash[:alert] = "Unable to create strategy"
+      @path = strategy_crossovers_path(@strategy)
+      @method = :post
       render :new
     end
   end
@@ -36,8 +41,22 @@ class Strategy::CrossoversController < ApplicationController
 
   def edit
     @strategy = Strategy.find(params[:id])
-    @strategy.indicators.each do |indicator|
-      indicator.value = indicator.value.to_i
+    @indicators = @strategy.indicators.order('id ASC')
+    @path = strategy_crossover_path(@strategy)
+    @method = :patch
+  end
+
+  def update
+    @strategy = Strategy.find(params[:id])
+    @strategy.update_attributes(crossover_params)
+    if @strategy.save
+      flash[:notice] = "Successfully updated #{@strategy.name}!"
+      redirect_to strategy_crossover_url(@strategy)
+    else
+      flash[:alert] = "Unable to update #{@strategy.name}."
+      @path = strategy_crossover_path(@strategy)
+      @method = :patch
+      render :edit
     end
   end
 

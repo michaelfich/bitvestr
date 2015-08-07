@@ -1,12 +1,18 @@
-<h2>Strategies</h2>
-
 <div class="strategies">
+  <h2>Your Investment Strategies</h2>
+
   <% if @strategies %>
     <ol class="strategies">
       <% @strategies.each do |strategy| %>
         <li class="strategy">
-          <%= link_to strategy.name, strategy_crossover_path(strategy) %>
-          (Type: <%= strategy.classification.capitalize %>)
+            <%= link_to strategy_crossover_path(strategy) do %>
+              <div class="name">
+                <%= strategy.name %>
+              </div>
+              <div class="classification">
+                <%= strategy.classification.capitalize %>
+              </div>
+          <% end %>
         </li>
       <% end %>
     </ol>

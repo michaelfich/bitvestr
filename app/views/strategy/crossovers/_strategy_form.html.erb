@@ -1,14 +1,26 @@
-<%= form_for @strategy, html: {class: 'strategy'} do |f| %>
-  <div class="strategy">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<%= form_for @strategy, url: @path, method: @method, html: {class: 'strategy'} do |f| %>
+  <header>
+    <% if @strategy.errors.any? %>
+      <ul class="errors">
+        <% @strategy.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-    <%= f.label :interval, "Tick Interval" %>
-    <%= f.number_field :interval %>
-  </div>
+    <div class="strategy">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :interval, "Tick Interval" %>
+      <%= f.number_field :interval %>
+    </div>
+  </header>
 
   <div class="indicators">
-    <%= f.fields_for :indicators do |i| %>
+    <div class="buy">Buying Parameters</div>
+    <div class="sell">Selling Parameters</div>
+    <%= f.fields_for :indicators, @indicators do |i| %>
       <%= render 'indicator_fields', f: i %>
     <% end %>
   </div>

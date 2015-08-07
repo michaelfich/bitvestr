@@ -4,7 +4,6 @@ function drawGraph(ticks) {
   var data = new google.visualization.DataTable();
   data.addColumn('datetime', 'Timestamp');
   data.addColumn('number', 'Value');
-  // data.addColumn({ type: 'string', role: 'annotation' });
   data.addColumn({ type: 'string', role: 'style' });
   data.addRows(ticks);
 
@@ -42,14 +41,13 @@ function getTicksArray(data) {
     if (buy) {
       style = "stroke-color: green; fill-color: green";
       if (last != "buy") {
-        console.log(data[i]);
         last = "buy";
         annotation = "buy"
       } else {
         annotation = null;
       }
     } else if (sell) {
-      style = "stroke-color: blue; fill-color: blue";
+      style = "stroke-color: red; fill-color: red";
       if (last != "sell") {
         last = "sell";
         annotation = "sell"
@@ -67,6 +65,13 @@ function getTicksArray(data) {
 }
 
 $(document).on('ready page:load', function() {
+  var values = {
+    'buy_low' : $('#bl_range').text(),
+    'buy_high' : $('#bh_range').text(),
+    'sell_low' : $('#sl_range').text(),
+    'sell_high' : $('#sh_range').text(),
+  };
+
   function getChart() {
     $.ajax({
       url: 'http://localhost:3000/ticks',
@@ -74,10 +79,10 @@ $(document).on('ready page:load', function() {
       dataType: 'json',
       data: {
         'count': 100,
-        'b1_calc': 'moving_avg',  'b1_range': 7,
-        'b2_calc': 'moving_avg',  'b2_range': 30,
-        's1_calc': 'moving_avg',  's1_range': 30,
-        's2_calc': 'moving_avg',  's2_range': 7,
+        'b1_calc': 'moving_avg',  'b1_range': values.buy_low,
+        'b2_calc': 'moving_avg',  'b2_range': values.buy_high,
+        's1_calc': 'moving_avg',  's1_range': values.sell_low,
+        's2_calc': 'moving_avg',  's2_range': values.sell_high
       }
     }).done(function(ticksJSON) {
       var ticksArr = getTicksArray( ticksJSON );
