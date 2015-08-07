@@ -13,32 +13,16 @@ class Tick < ActiveRecord::Base
 
   end
 
-  # def test(range)
-  #   relevant_records(range)
-  # end
-
-  # def test2(range)
-  #   furthest_moving_avg(range)
-  # end
-
-  # def test3(range)
-  #   previous_ema(range)
-  # end
-
-  # def real_test(range)
-  #   test(range)
-  #   test2(range)
-  #   test3(range)
-  # end
-
 
   # def vwap(array)
   #   (array["price"].sum * array["volume"].sum) / array["volume"].sum
   # end
 
-  # def macd(array)
-  #   EMA1 - EMA2
-  # end
+  def macd(fast_range, slow_range, signal_range)
+    macd_line = exponential_moving_avg(fast_range) - exponential_moving_avg(slow_range)
+    signal_line = exponential_moving_avg(signal_range)
+    macd_line - signal_line
+  end
 
   # def atr(array)
   # end
@@ -99,11 +83,16 @@ class Tick < ActiveRecord::Base
       relevant = relevant_records(range).reverse
       multiplier = relevant_multiplier(range)
       relevant.drop(1)
-      relevant.each do |array|
+      relevant.each do |array|  
         x = ((array.first.last_price - avgs.last) * multiplier) + avgs.last
         avgs << x
       end 
       avgs
+    end
+
+    # MACD methods
+    def macd_line(fast_range, slow_range)
+      exponential_moving_avg(fast_range) - exponential_moving_avg(slow_range)
     end
 
   

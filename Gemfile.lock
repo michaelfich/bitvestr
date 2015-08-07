@@ -79,6 +79,8 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    indicators (1.0.3)
+      rails
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -209,6 +211,7 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.0)
   cocoon
   httparty (~> 0.13.5)
+  indicators
   jbuilder (~> 2.0)
   jquery-rails
   pg
