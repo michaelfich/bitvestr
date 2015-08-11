@@ -164,6 +164,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    securities (2.0.1)
+      nokogiri
+      rails
     slop (3.6.0)
     sorcery (0.9.1)
       bcrypt (~> 3.1)
@@ -220,6 +223,7 @@ DEPENDENCIES
   rails (= 4.2.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  securities
   sorcery
   spring
   turbolinks
