@@ -15,7 +15,7 @@ div.strategies {
       box-sizing: border-box;
       div {
         padding: 20px;
-        box-sizing: inherit;
+        box-sizing: border-box;
         background: #eee;
         margin: 2px 0;
         &.name {
@@ -29,7 +29,9 @@ div.strategies {
         }
       }
       &:hover {
-        div { background: #ddd; }
+        div {
+          background: #ddd;
+        }
       }
     }
 

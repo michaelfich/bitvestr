@@ -29,4 +29,33 @@
 
 <div id="chart"></div>
 
-<%= javascript_include_tag 'chart/chart', 'data-turbolinks-track' => true %>
+<script>
+$(document).on('ready page:load', function() {
+  var values = {
+    'buy_low' : $('#bl_range').text(),
+    'buy_high' : $('#bh_range').text(),
+    'sell_low' : $('#sl_range').text(),
+    'sell_high' : $('#sh_range').text(),
+  };
+
+  function getChart() {
+    $.ajax({
+      url: 'http://localhost:3000/ticks',
+      method: 'post',
+      dataType: 'json',
+      data: {
+        'count': 100,
+        'b1_calc': 'moving_avg',  'b1_range': values.buy_low,
+        'b2_calc': 'moving_avg',  'b2_range': values.buy_high,
+        's1_calc': 'moving_avg',  's1_range': values.sell_low,
+        's2_calc': 'moving_avg',  's2_range': values.sell_high
+      }
+    }).done(function(ticksJSON) {
+      var ticksArr = getTicksArray( ticksJSON );
+      google.setOnLoadCallback( drawGraph(ticksArr) );
+    });
+  };
+
+  getChart();
+});
+</script>
