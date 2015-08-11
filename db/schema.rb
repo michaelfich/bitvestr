@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807041428) do
+ActiveRecord::Schema.define(version: 20150811192645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "formulas", force: :cascade do |t|
+    t.string "name"
+    t.string "display"
+  end
 
   create_table "indicators", force: :cascade do |t|
     t.integer  "strategy_id"
@@ -22,7 +27,6 @@ ActiveRecord::Schema.define(version: 20150807041428) do
     t.integer  "value"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.boolean  "action"
     t.integer  "period"
     t.integer  "comparison"
   end
@@ -32,10 +36,10 @@ ActiveRecord::Schema.define(version: 20150807041428) do
   create_table "strategies", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "interval"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "name"
-    t.string   "type"
+    t.string   "classification"
   end
 
   add_index "strategies", ["user_id"], name: "index_strategies_on_user_id", using: :btree

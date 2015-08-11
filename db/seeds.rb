@@ -18,3 +18,8 @@ Tick.destroy_all
 data.each do |date, value|
   Tick.create(datetime: date, last_price: value)
 end
+
+Formula.create(name: "moving_avg", display: "MA (Moving Average)") if Formula.count < 1
+Formula.create(name: "ema", display: "EMA (Exponential Moving Average)") if Formula.count < 2
+Formula.create(name: "macd", display: "MACD (Moving Average Convergence Divergence)") if Formula.count < 3
+Formula.create(name: "rsi", display: "RSI (Relative Strength Index)") if Formula.count < 4

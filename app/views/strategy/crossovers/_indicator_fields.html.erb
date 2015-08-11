@@ -1,6 +1,4 @@
 <div class="indicator">
-  <%= f.hidden_field 'action', value: 'buy' %>
-
   <div class="attributes">
     <%= f.label :name, "Indicator Name" %>
     <%= f.select :name, options_for_select([ ['Moving Average', 'Moving AVG'] ]) %>
@@ -10,5 +8,4 @@
     <%= f.label :value, "Period" %>
     <%= f.number_field :value, { min: 1, max: 500 } %>
   </div>
-
 </div>

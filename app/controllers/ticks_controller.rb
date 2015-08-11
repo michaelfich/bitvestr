@@ -14,7 +14,6 @@ class TicksController < ApplicationController
     sell_last_calc = params[:s2_calc]
     sell_last_range = params[:s2_range].to_i
 
-
     ticks.map! do |tick|
       result = {
         id: tick.id,

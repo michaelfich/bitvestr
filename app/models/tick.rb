@@ -1,6 +1,4 @@
 class Tick < ActiveRecord::Base
-
-
   def moving_avg(range)
     x = Indicators::Data.new(all_prices)
     y = x.calc(:type => :sma, :params => range).output
@@ -25,26 +23,13 @@ class Tick < ActiveRecord::Base
     y.last
   end
 
-
   # def vwap(array)
-
-
-
   # def atr(array)
-  
-
   # def sar(array)
- 
-
   # def mfi(array)
- 
-
   # def aroon(array)
- 
 
-
-private
-
+  private
   def all_prices
     prices = []
     Tick.all.each do |tick|
@@ -52,6 +37,4 @@ private
     end
     prices
   end
-
-
 end

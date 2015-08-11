@@ -1,0 +1,33 @@
+<%= form_for @strategy, url: @path, method: @method, html: {class: 'strategy'} do |f| %>
+  <header>
+    <% if @strategy.errors.any? %>
+      <ul class="errors">
+        <% @strategy.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="strategy">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+  </header>
+
+  <div class="indicators">
+    <div class="buy">
+      <%= f.fields_for @strategy.indicators[0] do |i| %>
+        Buy when the price of Bitcoin is less than <%= render 'indicator_fields', f: i %>
+      <% end %>
+    </div>
+    <div class="sell">
+      <%= f.fields_for @strategy.indicators[1] do |i| %>
+        Sell when the price of Bitcoin is greater than <%= render 'indicator_fields', f: i %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <%= f.button "Save Momentum Strategy", class: 'green' %>
+  </div>
+<% end %>

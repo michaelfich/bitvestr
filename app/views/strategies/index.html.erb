@@ -5,13 +5,9 @@
     <ol class="strategies">
       <% @strategies.each do |strategy| %>
         <li class="strategy">
-            <%= link_to strategy_crossover_path(strategy) do %>
-              <div class="name">
-                <%= strategy.name %>
-              </div>
-              <div class="classification">
-                <%= strategy.classification.capitalize %>
-              </div>
+          <%= link_to strategy_crossover_path(strategy) do %>
+            <div class="name"><%= strategy.name %></div>
+            <div class="classification"><%= strategy.classification.capitalize %></div>
           <% end %>
         </li>
       <% end %>
@@ -21,4 +17,5 @@
 
 <% if current_user %>
   <%= link_to "New Crossover Strategy", new_strategy_crossover_path, class: 'button blue' %>
+  <%= link_to "New Momentum Strategy", new_strategy_momentum_path, class: 'button blue' %>
 <% end %>

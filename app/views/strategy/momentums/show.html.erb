@@ -12,12 +12,12 @@
   <div class="legend">
     <p>
       <span class="indicator buy"></span>
-      Buy when the <strong><%= @buy_low.name %>(<span id="bl_range"><%= @buy_low.value.to_i %></span>)</strong> is less than the <strong><%= @buy_high.name %>(<span id="bh_range"><%= @buy_high.value.to_i %></span>)</strong>
+      Buy when the <strong><%= @buy.name %>(<span id="buy"><%= @buy.value.to_i %></span>)</strong> is less than the current value of Bitcoin.
     </p>
 
     <p>
       <span class="indicator sell"></span>
-      Sell when the <strong><%= @sell_low.name %>(<span id="sl_range"><%= @sell_low.value.to_i %></span>)</strong> is less than the <strong><%= @sell_high.name %>(<span id="sh_range"><%= @sell_high.value.to_i %></span>)</strong>
+      Sell when the <strong><%= @sell.name %>(<span id="sell"><%= @sell.value.to_i %></span>)</strong> is greater than the current value of Bitcoin.
     </p>
 
     <p>
@@ -44,7 +44,7 @@ $(document).on('ready page:load', function() {
       method: 'post',
       dataType: 'json',
       data: {
-        'count': 120,
+        'count': 100,
         'b1_calc': 'moving_avg',  'b1_range': values.buy_low,
         'b2_calc': 'moving_avg',  'b2_range': values.buy_high,
         's1_calc': 'moving_avg',  's1_range': values.sell_low,
@@ -56,6 +56,6 @@ $(document).on('ready page:load', function() {
     });
   };
 
-  getChart();
+  // getChart();
 });
 </script>

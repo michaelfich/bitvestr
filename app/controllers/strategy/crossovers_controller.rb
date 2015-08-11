@@ -4,11 +4,6 @@ class Strategy::CrossoversController < ApplicationController
     @strategy.classification = "crossover"
     (1..4).each do |n|
       indicator = @strategy.indicators.build
-      indicator.action = if n < 3
-        'buy'
-      else
-        'sell'
-      end
     end
     @indicators = @strategy.indicators
     @comparisons = Indicator::COMPARATORS
@@ -64,7 +59,7 @@ class Strategy::CrossoversController < ApplicationController
   def crossover_params
     params.require(:strategy).permit(:name, :interval,
       indicators_attributes: [
-        :id, :name, :value, :comparison, :period, :action, :_destroy
+        :id, :name, :value, :comparison, :period, :_destroy
       ]
     )
   end

@@ -1,0 +1,2 @@
+module Strategy::MomentumsHelper
+end
