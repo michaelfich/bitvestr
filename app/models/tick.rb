@@ -4,13 +4,11 @@ class Tick < ActiveRecord::Base
     sum_value(records) / range.to_i
   end
 
-
   def exponential_moving_avg(range)
     current = last_records(range).first
     prev_ema = previous_ema(range).last
     multiplier = relevant_multiplier(range)
     (current.last_price - prev_ema) * multiplier + prev_ema
-
   end
 
 
@@ -42,9 +40,7 @@ class Tick < ActiveRecord::Base
   # end
 
   private
-
-#SMA/General Use Methods
-
+  #SMA/General Use Methods
     def last_records(range)
       offset = Tick.where(id: self.id..Tick.last.id).count - 1
       Tick.order("id DESC").offset(offset).limit(range)
@@ -86,17 +82,7 @@ class Tick < ActiveRecord::Base
       relevant.each do |array|  
         x = ((array.first.last_price - avgs.last) * multiplier) + avgs.last
         avgs << x
-      end 
+      end
       avgs
     end
-
-    # MACD methods
-    def macd_line(fast_range, slow_range)
-      exponential_moving_avg(fast_range) - exponential_moving_avg(slow_range)
-    end
-
-  
-  
-  
-
 end
