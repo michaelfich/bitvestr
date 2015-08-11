@@ -49,6 +49,9 @@ gem 'httparty', '~> 0.13.5'
 
 gem 'whenever', require: false
 
+gem 'indicators'
+
+gem 'securities'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
