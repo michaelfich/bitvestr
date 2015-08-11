@@ -41,10 +41,11 @@ $(document).on('ready page:load', function() {
   function getChart() {
     $.ajax({
       url: 'http://localhost:3000/ticks',
-      method: 'post',
+      method: 'get',
       dataType: 'json',
       data: {
         'count': 120,
+        'type': 'crossover',
         'b1_calc': 'moving_avg',  'b1_range': values.buy_low,
         'b2_calc': 'moving_avg',  'b2_range': values.buy_high,
         's1_calc': 'moving_avg',  's1_range': values.sell_low,

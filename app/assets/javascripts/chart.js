@@ -15,6 +15,12 @@ function drawGraph(ticks) {
     vAxis: {
       viewWindowMode: 'explicit',
       format: 'currency',
+      textPosition: 'out',
+      textStyle: {
+        fontName: 'monospace',
+        color: '#000',
+        bold: true,
+      }
     },
     backgroundColor: { fill: 'transparent' },
     legend: { position: 'none' },

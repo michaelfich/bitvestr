@@ -12,7 +12,7 @@ class Strategy::MomentumsController < ApplicationController
   end
 
   def create
-    @strategy = Strategy.new()
+    @strategy = Strategy.new(momentum_params)
     @strategy.user = current_user
     @strategy.classification = "momentum"
     if @strategy.save

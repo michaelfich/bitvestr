@@ -14,14 +14,14 @@
     </div>
   </header>
 
-  <div class="indicators">
+   <div class="indicators">
     <div class="buy">
-      <%= f.fields_for @strategy.indicators[0] do |i| %>
+      <%= f.fields_for :indicators, @strategy.indicators[0] do |i| %>
         Buy when the price of Bitcoin is less than <%= render 'indicator_fields', f: i %>
       <% end %>
     </div>
     <div class="sell">
-      <%= f.fields_for @strategy.indicators[1] do |i| %>
+      <%= f.fields_for :indicators, @strategy.indicators[1] do |i| %>
         Sell when the price of Bitcoin is greater than <%= render 'indicator_fields', f: i %>
       <% end %>
     </div>

@@ -6,7 +6,7 @@
 
   <p>
     <%= link_to 'Back', strategies_path %>
-    <%= link_to 'Edit', edit_strategy_crossover_path(@strategy) %>
+    <%= link_to 'Edit', edit_strategy_momentum_path(@strategy) %>
   </p>
 
   <div class="legend">
@@ -32,23 +32,19 @@
 <script>
 $(document).on('ready page:load', function() {
   var values = {
-    'buy_low' : $('#bl_range').text(),
-    'buy_high' : $('#bh_range').text(),
-    'sell_low' : $('#sl_range').text(),
-    'sell_high' : $('#sh_range').text(),
+    'buy' : $('#sell').text(),
+    'sell' : $('#buy').text(),
   };
 
   function getChart() {
     $.ajax({
       url: 'http://localhost:3000/ticks',
-      method: 'post',
+      method: 'get',
       dataType: 'json',
       data: {
-        'count': 100,
-        'b1_calc': 'moving_avg',  'b1_range': values.buy_low,
-        'b2_calc': 'moving_avg',  'b2_range': values.buy_high,
-        's1_calc': 'moving_avg',  's1_range': values.sell_low,
-        's2_calc': 'moving_avg',  's2_range': values.sell_high
+        'type': 'momentum',
+        'buy_calc': 'moving_avg',   'buy_range': values.buy,
+        'sell_calc': 'moving_avg',  'sell_range': values.sell,
       }
     }).done(function(ticksJSON) {
       var ticksArr = getTicksArray( ticksJSON );
@@ -56,6 +52,6 @@ $(document).on('ready page:load', function() {
     });
   };
 
-  // getChart();
+  getChart();
 });
 </script>
