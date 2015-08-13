@@ -34,20 +34,11 @@ class TicksController < ApplicationController
 
       buy_first = calculate_price(tick, buy_first_calc, buy_first_range)
       buy_last = calculate_price(tick, buy_last_calc, buy_last_range)
+      sell_first = calculate_price(tick, sell_first_calc, sell_first_range)
+      sell_last = calculate_price(tick, sell_last_calc, sell_last_range)
 
       result[:good_buy] = buy_first < buy_last
-
-      if sell_first_calc == "ma"
-        sell_first = tick.ma(sell_first_range)
-      end
-
-      if sell_last_calc == "ma"
-        sell_last = tick.ma(sell_last_range)
-      end
-
-      if sell_first && sell_last
-        result[:good_sell] = sell_first < sell_last
-      end
+      result[:good_sell] = sell_first < sell_last
 
       result
     end
@@ -69,28 +60,8 @@ class TicksController < ApplicationController
         sell_calc: sell_calc
       }
 
-      if buy_calc == "ma"
-        buy_price = tick.ma(buy_range)
-      elsif buy_calc == "ema"
-        buy_price = tick.ema(buy_range)
-      elsif buy_calc == "macd"
-        buy_price = tick.macd(buy_range)
-      elsif buy_calc == "rsi"
-        buy_price = tick.rsi(buy_range)
-      end
-
-      if sell_calc == "ma"
-        sell_price = tick.ma(sell_range)
-      elsif sell_calc == "ema"
-        sell_price = tick.ema(sell_range)
-      elsif sell_calc == "macd"
-        sell_price = tick.macd(sell_range)
-      elsif sell_calc == "rsi"
-        sell_price = tick.rsi(sell_range)
-      end
-
-      result[:buy_price] = buy_price
-      result[:sell_price] = sell_price
+      buy_price = calculate_price(tick, buy_calc, buy_range)
+      sell_price = calculate_price(tick, sell_calc, sell_range)
 
       result[:good_buy] = buy_price < tick.last_price
       result[:good_sell] = tick.last_price < sell_price
