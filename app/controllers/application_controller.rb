@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def get_formulas
-    formulas = Formula.all
+    formulas = Formula.ordered
     formulas = formulas.map do |formula|
       [ formula.abbreviation, formula.name ]
     end

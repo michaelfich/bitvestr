@@ -12,12 +12,12 @@
   <div class="legend">
     <p>
       <span class="indicator buy"></span>
-      Buy when the <strong><%= @buy.name %>(<span id="buy"><%= @buy.value.to_i %></span>)</strong> is less than the current value of Bitcoin.
+      Buy when the <strong><%= Formula.display(@buy.name) %>(<span id="buy"><%= @buy.value.to_i %></span>)</strong> is less than the current value of Bitcoin.
     </p>
 
     <p>
       <span class="indicator sell"></span>
-      Sell when the <strong><%= @sell.name %>(<span id="sell"><%= @sell.value.to_i %></span>)</strong> is greater than the current value of Bitcoin.
+      Sell when the <strong><%= Formula.display(@sell.name) %>(<span id="sell"><%= @sell.value.to_i %></span>)</strong> is greater than the current value of Bitcoin.
     </p>
 
     <p>

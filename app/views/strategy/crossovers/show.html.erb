@@ -12,12 +12,12 @@
   <div class="legend">
     <p>
       <span class="indicator buy"></span>
-      Buy when <strong><%= @buy_low.name %>(<span id="bl_range"><%= @buy_low.value.to_i %></span>)</strong> is less than the <strong><%= @buy_high.name %>(<span id="bh_range"><%= @buy_high.value.to_i %></span>)</strong>
+      Buy when <strong><%= Formula.display(@buy_low.name) %>(<span id="bl_range"><%= @buy_low.value.to_i %></span>)</strong> is less than the <strong><%= Formula.display(@buy_high.name) %>(<span id="bh_range"><%= @buy_high.value.to_i %></span>)</strong>
     </p>
 
     <p>
       <span class="indicator sell"></span>
-      Sell when <strong><%= @sell_low.name %>(<span id="sl_range"><%= @sell_low.value.to_i %></span>)</strong> is less than the <strong><%= @sell_high.name %>(<span id="sh_range"><%= @sell_high.value.to_i %></span>)</strong>
+      Sell when <strong><%= Formula.display(@sell_low.name) %>(<span id="sl_range"><%= @sell_low.value.to_i %></span>)</strong> is less than the <strong><%= Formula.display(@sell_high.name) %>(<span id="sh_range"><%= @sell_high.value.to_i %></span>)</strong>
     </p>
 
     <p>
