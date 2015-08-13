@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812183423) do
+ActiveRecord::Schema.define(version: 20150813180258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "formulas", force: :cascade do |t|
-    t.string "name"
-    t.string "abbreviation"
-    t.string "full_name"
+    t.string  "name"
+    t.string  "abbreviation"
+    t.string  "full_name"
+    t.integer "order_number"
   end
+
+  add_index "formulas", ["order_number"], name: "index_formulas_on_order_number", using: :btree
 
   create_table "indicators", force: :cascade do |t|
     t.integer  "strategy_id"

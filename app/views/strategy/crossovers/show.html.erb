@@ -46,16 +46,19 @@ $(document).on('ready page:load', function() {
       data: {
         'count': 120,
         'type': 'crossover',
-        'b1_calc': 'ema',  'b1_range': values.buy_low,
-        'b2_calc': 'ema',  'b2_range': values.buy_high,
-        's1_calc': 'ma',  's1_range': values.sell_low,
-        's2_calc': 'ma',  's2_range': values.sell_high
+        'b1_calc': '<%= @buy_low.name %>',   'b1_range': values.buy_low,
+        'b2_calc': '<%= @buy_high.name %>',  'b2_range': values.buy_high,
+        's1_calc': '<%= @sell_low.name %>',  's1_range': values.sell_low,
+        's2_calc': '<%= @sell_high.name %>', 's2_range': values.sell_high
       }
     }).done(function(ticksJSON) {
       var ticksArr = getTicksArray( ticksJSON );
       google.setOnLoadCallback( drawGraph(ticksArr) );
     });
   };
+
+// spinning loading graphic
+// http://codepen.io/anon/pen/qdwxQj
 
   getChart();
 });

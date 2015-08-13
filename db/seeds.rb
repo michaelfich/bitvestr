@@ -21,29 +21,33 @@ end
 
 if Formula.count < 1
   Formula.create(
-    name: "moving_avg",
+    name: "ma",
     abbreviation: "MA",
-    full_name: "Moving Average"
+    full_name: "Moving Average",
+    order_number: 1
   )
 end
 if Formula.count < 2
   Formula.create(
     name: "ema",
     abbreviation: "EMA",
-    full_name: "Exponential Moving Average"
+    full_name: "Exponential Moving Average",
+    order_number: 2
   )
 end
 if Formula.count < 3
   Formula.create(
     name: "macd",
     abbreviation: "MACD",
-    full_name: "Moving Average Convergence Divergence"
+    full_name: "Moving Average Convergence Divergence",
+    order_number: 3
   )
 end
 if Formula.count < 4
   Formula.create(
     name: "rsi",
     abbreviation: "RSI",
-    full_name: "Relative Strength Index"
+    full_name: "Relative Strength Index",
+    order_number: 4
   )
 end

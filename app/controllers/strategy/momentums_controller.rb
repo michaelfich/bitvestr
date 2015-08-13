@@ -9,6 +9,7 @@ class Strategy::MomentumsController < ApplicationController
     @comparisons = Indicator::COMPARATORS
     @path = strategy_momentums_path(@strategy)
     @method = :post
+    @formulas = get_formulas
   end
 
   def create
@@ -30,6 +31,29 @@ class Strategy::MomentumsController < ApplicationController
     @strategy = Strategy.find(params[:id])
     @buy = @strategy.indicators.first
     @sell = @strategy.indicators.second
+    @formulas = get_formulas
+  end
+
+  def edit
+    @strategy = Strategy.find(params[:id])
+    @indicators = @strategy.indicators.order('id ASC')
+    @path = strategy_momentum_path(@strategy)
+    @method = :patch
+    @formulas = get_formulas
+  end
+
+  def update
+    @strategy = Strategy.find(params[:id])
+    @strategy.update_attributes(momentum_params)
+    if @strategy.save
+      flash[:notice] = "Successfully updated #{@strategy.name}!"
+      redirect_to strategy_momentum_url(@strategy)
+    else
+      flash[:alert] = "Unable to update #{@strategy.name}."
+      @path = strategy_momentum_path(@strategy)
+      @method = :patch
+      render :edit
+    end
   end
 
   private

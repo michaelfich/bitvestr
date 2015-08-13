@@ -33,6 +33,7 @@ class Strategy::CrossoversController < ApplicationController
     @buy_high = @strategy.indicators.second
     @sell_low = @strategy.indicators.third
     @sell_high = @strategy.indicators.fourth
+    @formulas = get_formulas
   end
 
   def edit
@@ -40,6 +41,7 @@ class Strategy::CrossoversController < ApplicationController
     @indicators = @strategy.indicators.order('id ASC')
     @path = strategy_crossover_path(@strategy)
     @method = :patch
+    @formulas = get_formulas
   end
 
   def update
