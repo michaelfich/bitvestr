@@ -1,5 +1,6 @@
-$blue: #29B6F6;
-$darkblue: #1976D2;
+$primary: #333;
+$primary-dark: #555;
+$primary-light: #555;
 $lightgray: #ecf0f1;
 
 html {
@@ -10,7 +11,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: $blue;
+  background: $primary;
   color: #eee;
 }
 
@@ -26,11 +27,11 @@ header.outer-container {
   height: 90px;
   padding-top: 5px;
   box-sizing: border-box;
-  background: $blue;
+  background: $primary;
 }
 
 nav.outer-container {
-  background: #FFC107;
+  background: #f7931a;
   border-bottom: 3px solid #eee;
 }
 
@@ -44,7 +45,7 @@ section.outer-container {
 
 footer.outer-container {
   padding: 10px 0 70px;
-  background: $blue;
+  background: $primary;
 }
 
 .inner-container {
@@ -94,8 +95,8 @@ header.outer-container {
       font-size: 3.5em;
       font-weight: normal;
       text-shadow:
-        2px 2px 0 $blue,
-        4px 4px 4px $darkblue;
+        2px 2px 0 $primary,
+        4px 4px 0px $primary-light;
     }
     aside.session {
       position: absolute;
@@ -133,28 +134,28 @@ form.user {
       font-size: 1rem;
     }
   }
-}
 
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='number'] {
-  background: none;
-  border: none;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(200,200,200,1);
-  outline: none;
-  &:focus {
-    border-bottom-color: rgba(20,20,20,1);
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'] {
+    background: none;
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(200,200,200,1);
+    outline: none;
+    &:focus {
+      border-bottom-color: rgba(20,20,20,1);
+    }
   }
-}
 
-input[type='number'] {
-  box-sizing: border-box;
-  width: 50px;
-  text-align: center;
-  padding-left: 10px;
+  input[type='number'] {
+    box-sizing: border-box;
+    width: 50px;
+    text-align: center;
+    padding-left: 10px;
+  }
 }
 
 a.button,

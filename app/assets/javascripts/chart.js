@@ -17,7 +17,7 @@ function drawGraph(ticks) {
       format: 'currency',
       textPosition: 'out',
       textStyle: {
-        fontName: 'monospace',
+        fontName: 'Inconsolata',
         color: '#000',
         bold: true,
       }

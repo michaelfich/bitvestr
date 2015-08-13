@@ -42,9 +42,10 @@ $(document).on('ready page:load', function() {
       method: 'get',
       dataType: 'json',
       data: {
+        'count': 120,
         'type': 'momentum',
-        'buy_calc': 'moving_avg',   'buy_range': values.buy,
-        'sell_calc': 'moving_avg',  'sell_range': values.sell,
+        'buy_calc': 'ma',   'buy_range': values.buy,
+        'sell_calc': 'ma',  'sell_range': values.sell,
       }
     }).done(function(ticksJSON) {
       var ticksArr = getTicksArray( ticksJSON );

@@ -1,5 +1,5 @@
 class Tick < ActiveRecord::Base
-  def moving_avg(range)
+  def ma(range)
     x = Indicators::Data.new(all_prices(range))
     y = x.calc(:type => :sma, :params => range).output
     y.last

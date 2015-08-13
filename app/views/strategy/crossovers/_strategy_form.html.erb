@@ -9,20 +9,47 @@
     <% end %>
 
     <div class="strategy">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <div class="name">
+        <%= f.label :name, 'What is the name of your crossover strategy?' %>
+        <%= f.text_field :name %>
+      </div>
 
-      <%= f.label :interval, "Tick Interval" %>
-      <%= f.number_field :interval %>
+      <div class="interval">
+        <%= f.label :interval, "What is the interval of one tick?" %>
+        <%= f.number_field :interval %>
+      </div>
     </div>
   </header>
 
   <div class="indicators">
-    <div class="buy">Buying Parameters</div>
-    <div class="sell">Selling Parameters</div>
-    <%= f.fields_for :indicators, @indicators do |i| %>
-      <%= render 'indicator_fields', f: i %>
-    <% end %>
+    <div class="buy parameter">
+      Buy when
+      <div class="group">
+        <%= f.fields_for :indicators, @indicators[0] do |i| %>
+          <%= render 'indicator_fields', f: i %>
+        <% end %>
+      </div>
+      is less than
+      <div class="group">
+        <%= f.fields_for :indicators, @indicators[1] do |i| %>
+          <%= render 'indicator_fields', f: i %>
+        <% end %>
+      </div>
+    </div>
+    <div class="sell parameter">
+      Sell when
+      <div class="group">
+        <%= f.fields_for :indicators, @indicators[2] do |i| %>
+          <%= render 'indicator_fields', f: i %>
+        <% end %>
+      </div>
+      is less than
+      <div class="group">
+        <%= f.fields_for :indicators, @indicators[3] do |i| %>
+          <%= render 'indicator_fields', f: i %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="buttons">

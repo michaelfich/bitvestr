@@ -1,11 +1,2 @@
-<div class="indicator">
-  <div class="attributes">
-    <%= f.label :name, "Indicator Name" %>
-    <%= f.select :name, options_for_select([ ['Moving Average', 'Moving AVG'] ]) %>
-  </div>
-
-  <div class="attributes">
-    <%= f.label :value, "Period" %>
-    <%= f.number_field :value, { min: 1, max: 500 } %>
-  </div>
-</div>
+<%= f.select :name, options_for_select( @formulas ) %>
+(<%= f.number_field :value, { min: 1, max: 500 } %>)

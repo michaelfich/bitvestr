@@ -1,6 +1,6 @@
 class TicksController < ApplicationController
   def index
-    ticks = Tick.last(params[:count] || 60)
+    ticks = Tick.last(params[:count] || 60).to_a
 
     if params[:type] && params[:type] == 'crossover'
       render json: crossover(ticks).to_json
@@ -13,55 +13,36 @@ class TicksController < ApplicationController
 
   private
   def crossover(ticks)
-    if params[:b1_calc] && params[:b1_range]
-      buy_first_calc = params[:b1_calc]
-      buy_first_range = params[:b1_range].to_i
-    end
+    buy_first_calc = params[:b1_calc]
+    buy_first_range = params[:b1_range].to_i
 
-    if params[:b2_calc] && params[:b2_range]
-      buy_last_calc = params[:b2_calc]
-      buy_last_range = params[:b2_range].to_i
-    end
+    buy_last_calc = params[:b2_calc]
+    buy_last_range = params[:b2_range].to_i
 
-    if params[:s1_calc] && params[:s1_range]
-      sell_first_calc = params[:s1_calc]
-      sell_first_range = params[:s1_range].to_i
-    end
+    sell_first_calc = params[:s1_calc]
+    sell_first_range = params[:s1_range].to_i
 
-    if params[:s1_calc] && params[:s2_range]
-      sell_last_calc = params[:s2_calc]
-      sell_last_range = params[:s2_range].to_i
-    end
+    sell_last_calc = params[:s2_calc]
+    sell_last_range = params[:s2_range].to_i
 
-    ticks.map! do |tick|
+    ticks.map do |tick|
       result = {
         id: tick.id,
         last_price: tick.last_price,
         datetime: tick.datetime,
       }
 
-      if buy_first_calc && buy_first_calc == "moving_avg"
-        buy_first = tick.moving_avg(buy_first_range)
-        result[:moving_avg_buy_low] = buy_first
+      buy_first = calculate_price(tick, buy_first_calc, buy_first_range)
+      buy_last = calculate_price(tick, buy_last_calc, buy_last_range)
+
+      result[:good_buy] = buy_first < buy_last
+
+      if sell_first_calc == "ma"
+        sell_first = tick.ma(sell_first_range)
       end
 
-      if buy_first_calc && buy_last_calc == "moving_avg"
-        buy_last = tick.moving_avg(buy_last_range)
-        result[:moving_avg_buy_high] = buy_last
-      end
-
-      if buy_first && buy_last
-        result[:good_buy] = buy_first < buy_last
-      end
-
-      if sell_first_calc && sell_first_calc == "moving_avg"
-        sell_first = tick.moving_avg(sell_first_range)
-        result[:moving_avg_sell_low] = sell_first
-      end
-
-      if sell_last_calc && sell_last_calc == "moving_avg"
-        sell_last = tick.moving_avg(sell_last_range)
-        result[:moving_avg_sell_high] = sell_last
+      if sell_last_calc == "ma"
+        sell_last = tick.ma(sell_last_range)
       end
 
       if sell_first && sell_last
@@ -73,15 +54,11 @@ class TicksController < ApplicationController
   end
 
   def momentum(ticks)
-    if params[:buy_calc] && params[:buy_range]
-      buy_calc = params[:buy_calc]
-      buy_range = params[:buy_range].to_i
-    end
+    buy_calc = params[:buy_calc]
+    buy_range = params[:buy_range].to_i
 
-    if params[:sell_calc] && params[:sell_range]
-      sell_calc = params[:sell_calc]
-      sell_range = params[:sell_range].to_i
-    end
+    sell_calc = params[:sell_calc]
+    sell_range = params[:sell_range].to_i
 
     ticks.map! do |tick|
       result = {
@@ -92,25 +69,45 @@ class TicksController < ApplicationController
         sell_calc: sell_calc
       }
 
-      buy_price = tick.moving_avg(buy_range)
-      sell_price = tick.moving_avg(sell_range)
+      if buy_calc == "ma"
+        buy_price = tick.ma(buy_range)
+      elsif buy_calc == "ema"
+        buy_price = tick.ema(buy_range)
+      elsif buy_calc == "macd"
+        buy_price = tick.macd(buy_range)
+      elsif buy_calc == "rsi"
+        buy_price = tick.rsi(buy_range)
+      end
+
+      if sell_calc == "ma"
+        sell_price = tick.ma(sell_range)
+      elsif sell_calc == "ema"
+        sell_price = tick.ema(sell_range)
+      elsif sell_calc == "macd"
+        sell_price = tick.macd(sell_range)
+      elsif sell_calc == "rsi"
+        sell_price = tick.rsi(sell_range)
+      end
 
       result[:buy_price] = buy_price
       result[:sell_price] = sell_price
 
-      if tick.last_price < buy_price
-        result[:good_buy] = true
-      else
-        result[:good_buy] = false
-      end
-
-      if tick.last_price < sell_price
-        result[:good_sell] = true
-      else
-        result[:good_sell] = false
-      end
+      result[:good_buy] = buy_price < tick.last_price
+      result[:good_sell] = tick.last_price < sell_price
 
       result
+    end
+  end
+
+  def calculate_price(tick, calculation, range)
+    if calculation = "ma"
+      tick.ma(range)
+    elsif calculation = "ema"
+      tick.ema(range)
+    elsif calculation = "macd"
+      tick.macd(range)
+    elsif calculation = "rsi"
+      tick.rsi(range)
     end
   end
 end

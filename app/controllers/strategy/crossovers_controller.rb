@@ -9,6 +9,7 @@ class Strategy::CrossoversController < ApplicationController
     @comparisons = Indicator::COMPARATORS
     @path = strategy_crossovers_path(@strategy)
     @method = :post
+    @formulas = get_formulas
   end
 
   def create
