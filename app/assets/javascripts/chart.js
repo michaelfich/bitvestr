@@ -4,6 +4,7 @@ function drawGraph(ticks) {
   var data = new google.visualization.DataTable();
   data.addColumn('datetime', 'Timestamp');
   data.addColumn('number', 'Value');
+  // data.addColumn({ type: 'string', role: 'annotation' });
   data.addColumn({ type: 'string', role: 'style' });
   data.addRows(ticks);
 
@@ -72,6 +73,7 @@ function getTicksArray(data) {
       style = "stroke-color: blue; fill-color: blue";
     }
 
+    // result.push([time, price, annotation, style]);
     result.push([time, price, style]);
   }
 

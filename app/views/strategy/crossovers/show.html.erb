@@ -8,6 +8,9 @@
     </p>
   </header>
 
+  <div id="interval" style="display: none;">
+    <%= @strategy.interval %>
+  </div>
 
   <div class="legend">
     <p>
@@ -33,12 +36,13 @@
 
 <script>
 $(document).on('ready page:load', function() {
-  var values = {
-    'buy_low' : $('#bl_range').text(),
-    'buy_high' : $('#bh_range').text(),
-    'sell_low' : $('#sl_range').text(),
-    'sell_high' : $('#sh_range').text(),
-  };
+  var interval = parseInt($('#interval').text()),
+      values = {
+        'buy_low' : $('#bl_range').text(),
+        'buy_high' : $('#bh_range').text(),
+        'sell_low' : $('#sl_range').text(),
+        'sell_high' : $('#sh_range').text(),
+      };
 
   function getChart() {
     $.ajax({
@@ -46,8 +50,9 @@ $(document).on('ready page:load', function() {
       method: 'get',
       dataType: 'json',
       data: {
-        'count': 120,
         'type': 'crossover',
+        'count': 60,
+        'interval': 3,
         'b1_calc': '<%= @buy_low.name %>',   'b1_range': values.buy_low,
         'b2_calc': '<%= @buy_high.name %>',  'b2_range': values.buy_high,
         's1_calc': '<%= @sell_low.name %>',  's1_range': values.sell_low,

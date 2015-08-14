@@ -1,6 +1,12 @@
 class TicksController < ApplicationController
   def index
-    ticks = Tick.last(params[:count] || 60).to_a
+    @interval = (params[:interval] || 5).to_i
+    @count = (params[:count] || 60).to_i
+
+    indexes = Tick.last(@count * @interval).collect(&:id)
+    indexes.reject! { |i| i % @interval != 0 }
+
+    ticks = Tick.find(indexes);
 
     if params[:type] && params[:type] == 'crossover'
       render json: crossover(ticks).to_json
