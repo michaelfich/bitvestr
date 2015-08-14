@@ -22,7 +22,7 @@ end
 if Formula.count < 1
   Formula.create(
     name: "ma",
-    abbreviation: "MA",
+    abbreviation: "SMA",
     full_name: "Moving Average",
     order_number: 1
   )

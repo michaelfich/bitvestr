@@ -9,4 +9,15 @@ class ApplicationController < ActionController::Base
       [ formula.abbreviation, formula.name ]
     end
   end
+
+  def get_intervals
+    intervals = [
+      ["10 minutes", 1],
+      ["30 minutes", 3],
+      ["1 hour", 6],
+      ["2 hours", 12],
+      ["4 hours", 48],
+      ["8 hours", 96]
+    ]
+  end
 end

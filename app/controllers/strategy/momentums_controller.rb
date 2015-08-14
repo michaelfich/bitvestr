@@ -10,6 +10,7 @@ class Strategy::MomentumsController < ApplicationController
     @path = strategy_momentums_path(@strategy)
     @method = :post
     @formulas = get_formulas
+    @intervals = get_intervals
   end
 
   def create
@@ -40,6 +41,7 @@ class Strategy::MomentumsController < ApplicationController
     @path = strategy_momentum_path(@strategy)
     @method = :patch
     @formulas = get_formulas
+    @intervals = get_intervals
   end
 
   def update
