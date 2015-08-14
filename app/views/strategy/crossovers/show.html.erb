@@ -1,14 +1,13 @@
-<div id="strategy">
-  <p>
+<div id="strategy" class="momentum">
+  <header>
     <h2><%= @strategy.name %></h2>
-    <em>A <%= @strategy.classification.capitalize %> Strategy</em>
-  </p>
+    <p>A <%= @strategy.classification.capitalize %> Strategy</p>
+    <p class="nav">
+      <%= link_to 'Edit', edit_strategy_crossover_path(@strategy) %>
+      <%= link_to 'Delete', strategy_crossover_path(@strategy), method: :delete %>
+    </p>
+  </header>
 
-  <p>
-    <%= link_to 'Back', strategies_path %>
-    <%= link_to 'Edit', edit_strategy_crossover_path(@strategy) %>
-    <%= link_to 'Delete', strategy_crossover_path(@strategy), method: :delete %>
-  </p>
 
   <div class="legend">
     <p>
@@ -60,8 +59,8 @@ $(document).on('ready page:load', function() {
     });
   };
 
-// spinning loading graphic
-// http://codepen.io/anon/pen/qdwxQj
+  // spinning loading graphic
+  // http://codepen.io/anon/pen/qdwxQj
 
   getChart();
 });

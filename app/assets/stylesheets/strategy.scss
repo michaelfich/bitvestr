@@ -1,5 +1,27 @@
-h2.strategy {
-  text-align: center;
+div#strategy {
+  header {
+    text-align: center;
+    margin: 10px 0;
+
+    h2 {
+      margin: 10px 0 0;
+    }
+
+    p {
+      border-top: 1px solid rgba(100,100,100,0.5);
+      padding-top: 5px;
+      font-style: oblique;
+      font-weight: normal;
+      margin: 0;
+
+      &.nav {
+        border: none;
+        text-align: center;
+        margin-bottom: 50px;
+        font-style: normal;
+      }
+    }
+  }
 }
 
 div.strategies {
@@ -59,8 +81,8 @@ span.calculation {
       background: red;
       border-radius: 5px;
       &.both {
-        border: 2px solid yellow;
-        background: #f5f6a9;
+        border: 2px solid orange;
+        background: #f1d7a6;
       }
       &.buy {
         border: 2px solid green;

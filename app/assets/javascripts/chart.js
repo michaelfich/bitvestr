@@ -45,7 +45,7 @@ function getTicksArray(data) {
         sell = data[i].good_sell;
 
     if (buy && sell) {
-      style = "stroke-color: yellow; fill-color: yellow";
+      style = "stroke-color: orange; fill-color: orange";
       if (last != "both") {
         last = "both";
         annotation = "both";
@@ -72,7 +72,7 @@ function getTicksArray(data) {
       style = "stroke-color: blue; fill-color: blue";
     }
 
-    result.push( [time, price, style] );
+    result.push([time, price, style]);
   }
 
   return result;

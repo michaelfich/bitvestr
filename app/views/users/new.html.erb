@@ -2,16 +2,24 @@
 
 <%= form_for @user, html: { class: 'user' } do |f| %>
   <div class="field">
+    <%= f.text_field :first_name, autocomplete: :off %>
+    <%= f.label :first_name %>
+  </div>
+  <div class="field">
+    <%= f.text_field :last_name, autocomplete: :off %>
+    <%= f.label :last_name %>
+  </div>
+  <div class="field">
+    <%= f.email_field :email, autocomplete: :off %>
     <%= f.label :email %>
-    <%= f.email_field :email %>
   </div>
   <div class="field">
+    <%= f.password_field :password, autocomplete: :off %>
     <%= f.label :password %>
-    <%= f.password_field :password %>
   </div>
   <div class="field">
+    <%= f.password_field :password_confirmation, autocomplete: :off %>
     <%= f.label :password_confirmation, 'Confirm Password' %>
-    <%= f.password_field :password_confirmation %>
   </div>
   <div class="buttons">
     <%= f.button "Register", class: "blue" %>

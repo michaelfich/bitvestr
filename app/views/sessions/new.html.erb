@@ -2,13 +2,13 @@
 
 <%= form_tag sessions_path, method: :post, class: 'user' do %>
   <div class="field">
+    <%= email_field_tag :email, "", autocomplete: :off %>
     <%= label_tag :email, 'Email Address' %>
-    <%= email_field_tag :email %>
   </div>
 
   <div class="field">
+    <%= password_field_tag :password, "", autcomplete: :off %>
     <%= label_tag :password %>
-    <%= password_field_tag :password %>
   </div>
 
   <div class="buttons">

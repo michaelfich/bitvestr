@@ -23,6 +23,8 @@
 </div>
 
 <% if current_user %>
-  <%= link_to "New Crossover Strategy", new_strategy_crossover_path, class: 'button blue' %>
-  <%= link_to "New Momentum Strategy", new_strategy_momentum_path, class: 'button blue' %>
+  <div class="buttons">
+    <%= link_to "New Crossover Strategy", new_strategy_crossover_path, class: 'button blue' %>
+    <%= link_to "New Momentum Strategy", new_strategy_momentum_path, class: 'button blue' %>
+  </div>
 <% end %>
