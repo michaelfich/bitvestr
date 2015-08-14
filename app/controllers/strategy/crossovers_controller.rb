@@ -10,6 +10,7 @@ class Strategy::CrossoversController < ApplicationController
     @path = strategy_crossovers_path(@strategy)
     @method = :post
     @formulas = get_formulas
+    @intervals = get_intervals
   end
 
   def create
@@ -42,6 +43,7 @@ class Strategy::CrossoversController < ApplicationController
     @path = strategy_crossover_path(@strategy)
     @method = :patch
     @formulas = get_formulas
+    @intervals = get_intervals
   end
 
   def update

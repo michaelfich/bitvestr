@@ -16,7 +16,7 @@
 
       <div class="interval">
         <%= f.label :interval, "What is the interval of one tick?" %>
-        <%= f.number_field :interval %>
+        <%= f.select :interval, options_for_select(@intervals, selected: f.object.interval) %>
       </div>
     </div>
   </header>

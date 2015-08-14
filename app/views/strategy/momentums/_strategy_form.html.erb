@@ -9,8 +9,15 @@
     <% end %>
 
     <div class="strategy">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <div class="name">
+        <%= f.label :name, 'What is the name of your crossover strategy?' %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="interval">
+        <%= f.label :interval, "What is the interval of one tick?" %>
+        <%= f.select :interval, options_for_select(@intervals, selected: f.object.interval) %>
+      </div>
     </div>
   </header>
 

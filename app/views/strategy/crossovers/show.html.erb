@@ -52,7 +52,7 @@ $(document).on('ready page:load', function() {
       data: {
         'type': 'crossover',
         'count': 60,
-        'interval': 3,
+        'interval': interval,
         'b1_calc': '<%= @buy_low.name %>',   'b1_range': values.buy_low,
         'b2_calc': '<%= @buy_high.name %>',  'b2_range': values.buy_high,
         's1_calc': '<%= @sell_low.name %>',  's1_range': values.sell_low,
