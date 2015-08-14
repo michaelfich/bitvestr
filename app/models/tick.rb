@@ -1,24 +1,24 @@
 class Tick < ActiveRecord::Base
-  def ma(range)
-    x = Indicators::Data.new(all_prices(range))
+  def ma(range, interval=1)
+    x = Indicators::Data.new(all_prices(range, interval))
     y = x.calc(:type => :sma, :params => range).output
     y.last
   end
 
-  def ema(range)
-    x = Indicators::Data.new(all_prices(range))
+  def ema(range, interval=1)
+    x = Indicators::Data.new(all_prices(range, interval))
     y = x.calc(:type => :ema, :params => range).output
     y.last
   end
 
-  def macd(fast_period, slow_period, signal)
-    x = Indicators::Data.new(all_prices(slow_period + signal))
+  def macd(fast_period, slow_period, signal, interval=1)
+    x = Indicators::Data.new(all_prices(slow_period + signal, interval))
     y = x.calc(:type => :macd, :params => [fast_period, slow_period, signal]).output
     y.last.last
   end
 
-  def rsi(range)
-    x = Indicators::Data.new(all_prices(range+1))
+  def rsi(range, interval=1)
+    x = Indicators::Data.new(all_prices(range+1, interval))
     y = x.calc(:type => :rsi, :params => range).output
     y.last
   end

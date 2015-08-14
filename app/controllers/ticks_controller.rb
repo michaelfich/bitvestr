@@ -78,13 +78,13 @@ class TicksController < ApplicationController
 
   def calculate_price(tick, calculation, range)
     if calculation = "ma"
-      tick.ma(range)
+      tick.ma(range, @interval)
     elsif calculation = "ema"
-      tick.ema(range)
+      tick.ema(range, @interval)
     elsif calculation = "macd"
-      tick.macd(range)
+      tick.macd(range, @interval)
     elsif calculation = "rsi"
-      tick.rsi(range)
+      tick.rsi(range, @interval)
     end
   end
 end

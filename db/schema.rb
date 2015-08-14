@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20150814163905) do
 
   create_table "indicators", force: :cascade do |t|
     t.integer  "strategy_id"
+    t.string   "name"
     t.integer  "value"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "period"
     t.integer  "comparison"
-    t.string   "name"
   end
 
   add_index "indicators", ["strategy_id"], name: "index_indicators_on_strategy_id", using: :btree
