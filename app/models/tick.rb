@@ -12,13 +12,13 @@ class Tick < ActiveRecord::Base
   end
 
   def macd(fast_period, slow_period, signal)
-    x = Indicators::Data.new(all_prices(slow_period))
+    x = Indicators::Data.new(all_prices(slow_period + signal))
     y = x.calc(:type => :macd, :params => [fast_period, slow_period, signal]).output
-    y.last
+    y.last.last
   end
 
   def rsi(range)
-    x = Indicators::Data.new(all_prices(range))
+    x = Indicators::Data.new(all_prices(range+1))
     y = x.calc(:type => :rsi, :params => range).output
     y.last
   end
