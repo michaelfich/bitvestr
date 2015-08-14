@@ -57,7 +57,11 @@ span.calculation {
       width: 20px;
       margin-right: 8px;
       background: red;
-      border-radius: 15px;
+      border-radius: 5px;
+      &.both {
+        border: 2px solid yellow;
+        background: #f5f6a9;
+      }
       &.buy {
         border: 2px solid green;
         background: #b3d9b3;

@@ -3,10 +3,10 @@ class Formula < ActiveRecord::Base
     order(order_number: :asc)
   end
 
-  def self.display(short)
+  def self.display(name)
     @formulaArr ||= self.ordered
     result = @formulaArr.find do |formula|
-      formula.name == short
+      formula.name == name
     end
     result.full_name
   end

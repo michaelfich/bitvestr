@@ -7,6 +7,7 @@
   <p>
     <%= link_to 'Back', strategies_path %>
     <%= link_to 'Edit', edit_strategy_crossover_path(@strategy) %>
+    <%= link_to 'Delete', strategy_crossover_path(@strategy), method: :delete %>
   </p>
 
   <div class="legend">
@@ -14,12 +15,14 @@
       <span class="indicator buy"></span>
       Buy when <strong><%= Formula.display(@buy_low.name) %>(<span id="bl_range"><%= @buy_low.value.to_i %></span>)</strong> is less than the <strong><%= Formula.display(@buy_high.name) %>(<span id="bh_range"><%= @buy_high.value.to_i %></span>)</strong>
     </p>
-
     <p>
       <span class="indicator sell"></span>
       Sell when <strong><%= Formula.display(@sell_low.name) %>(<span id="sl_range"><%= @sell_low.value.to_i %></span>)</strong> is less than the <strong><%= Formula.display(@sell_high.name) %>(<span id="sh_range"><%= @sell_high.value.to_i %></span>)</strong>
     </p>
-
+    <p>
+      <span class="indicator both"></span>
+      Both buy and sell conditions are met
+    </p>
     <p>
       <span class="indicator none"></span>
       Neither sell or buy.

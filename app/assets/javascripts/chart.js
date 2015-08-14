@@ -44,11 +44,19 @@ function getTicksArray(data) {
         buy = data[i].good_buy,
         sell = data[i].good_sell;
 
-    if (buy) {
+    if (buy && sell) {
+      style = "stroke-color: yellow; fill-color: yellow";
+      if (last != "both") {
+        last = "both";
+        annotation = "both";
+      } else {
+        annotation = null;
+      }
+    } else if (buy) {
       style = "stroke-color: green; fill-color: green";
       if (last != "buy") {
         last = "buy";
-        annotation = "buy"
+        annotation = "buy";
       } else {
         annotation = null;
       }
@@ -56,7 +64,7 @@ function getTicksArray(data) {
       style = "stroke-color: red; fill-color: red";
       if (last != "sell") {
         last = "sell";
-        annotation = "sell"
+        annotation = "sell";
       } else {
         annotation = null;
       }

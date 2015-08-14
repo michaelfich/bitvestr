@@ -7,6 +7,7 @@
   <p>
     <%= link_to 'Back', strategies_path %>
     <%= link_to 'Edit', edit_strategy_momentum_path(@strategy) %>
+    <%= link_to 'Delete', strategy_momentum_path(@strategy), method: :delete %>
   </p>
 
   <div class="legend">
@@ -14,12 +15,14 @@
       <span class="indicator buy"></span>
       Buy when the <strong><%= Formula.display(@buy.name) %>(<span id="buy"><%= @buy.value.to_i %></span>)</strong> is less than the current value of Bitcoin.
     </p>
-
     <p>
       <span class="indicator sell"></span>
       Sell when the <strong><%= Formula.display(@sell.name) %>(<span id="sell"><%= @sell.value.to_i %></span>)</strong> is greater than the current value of Bitcoin.
     </p>
-
+    <p>
+      <span class="indicator both"></span>
+      Both buy and sell conditions are met
+    </p>
     <p>
       <span class="indicator none"></span>
       Neither sell or buy.

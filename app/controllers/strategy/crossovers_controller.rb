@@ -28,12 +28,19 @@ class Strategy::CrossoversController < ApplicationController
   end
 
   def show
-    @strategy = Strategy.find(params[:id])
-    @buy_low = @strategy.indicators.first
-    @buy_high = @strategy.indicators.second
-    @sell_low = @strategy.indicators.third
-    @sell_high = @strategy.indicators.fourth
-    @formulas = get_formulas
+    id = params[:id]
+    if Strategy.where(id: id).count == 0
+      flash[:alert] = "There is no strategy with the id of #{id}"
+      redirect_to strategies_path
+    else
+      @strategy = Strategy.find(id)
+      @buy_low = @strategy.indicators.first
+      @buy_high = @strategy.indicators.second
+      @sell_low = @strategy.indicators.third
+      @sell_high = @strategy.indicators.fourth
+      @formulas = get_formulas
+      render :show
+    end
   end
 
   def edit
@@ -56,6 +63,14 @@ class Strategy::CrossoversController < ApplicationController
       @method = :patch
       render :edit
     end
+  end
+
+  def destroy
+    @strategy = Strategy.find(params[:id])
+    @strategy.destroy
+
+    flash[:notice] = "Successfully deleted strategy: #{@strategy.name}"
+    redirect_to strategy_crossover_url(@strategy)
   end
 
   private

@@ -23,32 +23,27 @@
 
   <div class="indicators">
     <div class="buy parameter">
-      Buy when
-      <div class="group">
-        <%= f.fields_for :indicators, @indicators[0] do |i| %>
-          <%= render 'indicator_fields', f: i %>
-        <% end %>
-      </div>
+      I want to buy when
+
+      <%= f.fields_for :indicators, @indicators[0] do |i| %>
+        <%= render 'indicator_fields', f: i %>
+      <% end %>
+
       is less than
-      <div class="group">
-        <%= f.fields_for :indicators, @indicators[1] do |i| %>
-          <%= render 'indicator_fields', f: i %>
-        <% end %>
-      </div>
+
+      <%= f.fields_for :indicators, @indicators[1] do |i| %>
+        <%= render 'indicator_fields', f: i %>
+      <% end %>
     </div>
     <div class="sell parameter">
-      Sell when
-      <div class="group">
-        <%= f.fields_for :indicators, @indicators[2] do |i| %>
-          <%= render 'indicator_fields', f: i %>
-        <% end %>
-      </div>
+      and sell when
+      <%= f.fields_for :indicators, @indicators[2] do |i| %>
+        <%= render 'indicator_fields', f: i %>
+      <% end %>
       is less than
-      <div class="group">
-        <%= f.fields_for :indicators, @indicators[3] do |i| %>
-          <%= render 'indicator_fields', f: i %>
-        <% end %>
-      </div>
+      <%= f.fields_for :indicators, @indicators[3] do |i| %>
+        <%= render 'indicator_fields', f: i %>
+      <% end %>
     </div>
   </div>
 
