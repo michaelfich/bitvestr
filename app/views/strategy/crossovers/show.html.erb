@@ -1,4 +1,4 @@
-<div id="strategy" class="momentum">
+<div id="strategy" class="crossover">
   <header>
     <h2><%= @strategy.name %></h2>
     <p>A <%= @strategy.classification.capitalize %> Strategy</p>
@@ -8,8 +8,16 @@
     </p>
   </header>
 
-  <div id="interval" style="display: none;">
-    <%= @strategy.interval %>
+  <div class="collaboration">
+    <div class="collaborator">
+      <%= form_for ['strategy', @collaborator] do |f| %>
+        <%= f.hidden_field :strategy_id, value: @strategy.id %>
+        <%= f.email_field :user %>
+        <%= f.button "Add collaborator" %>
+      <% end %>
+      <ul class="confirm"></ul>
+      <ul class="errors"></ul>
+    </div>
   </div>
 
   <div class="legend">
@@ -52,7 +60,7 @@ $(document).on('ready page:load', function() {
       data: {
         'type': 'crossover',
         'count': 60,
-        'interval': interval,
+        'interval': '<%= @strategy.interval %>',
         'b1_calc': '<%= @buy_low.name %>',   'b1_range': values.buy_low,
         'b2_calc': '<%= @buy_high.name %>',  'b2_range': values.buy_high,
         's1_calc': '<%= @sell_low.name %>',  's1_range': values.sell_low,
@@ -63,9 +71,6 @@ $(document).on('ready page:load', function() {
       google.setOnLoadCallback( drawGraph(ticksArr) );
     });
   };
-
-  // spinning loading graphic
-  // http://codepen.io/anon/pen/qdwxQj
 
   getChart();
 });

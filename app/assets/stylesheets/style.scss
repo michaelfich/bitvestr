@@ -91,7 +91,8 @@ header.outer-container {
       line-height: 80px;
       margin: 0;
       padding: 0;
-      font-family: 'Oleo Script', cursive;
+      font-family: 'Audiowide', cursive;
+      // font-family: 'Oleo Script', cursive;
       font-size: 3.5em;
       font-weight: normal;
       text-shadow:
@@ -164,7 +165,7 @@ form.user {
 
 a.button,
 div.buttons a,
-button {
+div.buttons button {
   display: inline-block;
   box-sizing: border-box;
   font-size: 1rem;

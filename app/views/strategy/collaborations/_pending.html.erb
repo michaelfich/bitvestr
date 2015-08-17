@@ -1,0 +1,21 @@
+<% if !@pending.nil? && @pending.any? %>
+  <% @pending.each do |collaboration| %>
+    <p>
+      <%= form_for ['strategy', collaboration], action: :update do |f| %>
+        <%= f.hidden_field :strategy_id, value: collaboration.strategy.id %>
+        <%= f.hidden_field :confirmed, value: true %>
+        <%= f.button 'Accept' %>
+      <% end %>
+
+      <%= form_for ['strategy', collaboration], action: :update do |f| %>
+        <%= f.hidden_field :strategy_id, value: collaboration.strategy.id %>
+        <%= f.hidden_field :confirmed, value: false %>
+        <%= f.button 'Reject' %>
+      <% end %>
+
+      <strong><%= collaboration.strategy.name %></strong>
+      shared by
+      <strong><%= collaboration.strategy.user.full_name %></strong>
+    </p>
+  <% end %>
+<% end %>

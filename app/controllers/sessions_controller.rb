@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      flash[:notice] = "Thank you for logging in, #{@user.email}"
+      flash[:notice] = "Thank you for logging in, #{@user.full_name} "
       redirect_to :root
     else
       flash[:alert] = "Unable to log in.  Please try again."

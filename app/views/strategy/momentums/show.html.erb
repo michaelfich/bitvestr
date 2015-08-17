@@ -1,4 +1,4 @@
-<div id="strategy" class="crossover">
+<div id="strategy" class="momentum">
   <header>
     <h2><%= @strategy.name %></h2>
     <p>A <%= @strategy.classification.capitalize %> Strategy</p>
@@ -7,6 +7,18 @@
       <%= link_to 'Delete', strategy_momentum_path(@strategy), method: :delete %>
     </p>
   </header>
+
+  <div class="collaboration">
+    <div class="collaborator">
+      <%= form_for ['strategy', @collaborator] do |f| %>
+        <%= f.hidden_field :strategy_id, value: @strategy.id %>
+        <%= f.email_field :user %>
+        <%= f.button "Add collaborator" %>
+      <% end %>
+      <ul class="confirm"></ul>
+      <ul class="errors"></ul>
+    </div>
+  </div>
 
   <div class="legend">
     <p>
@@ -46,8 +58,8 @@ $(document).on('ready page:load', function() {
       data: {
         'type': 'momentum',
         'count': 60,
-        'interval' interval,
-        'buy_calc': '<%= @sell.name %>',   'buy_range': values.buy,
+        'interval': '<%= @strategy.interval %>',
+        'buy_calc': '<%= @sell.name %>',  'buy_range': values.buy,
         'sell_calc': '<%= @buy.name %>',  'sell_range': values.sell,
       }
     }).done(function(ticksJSON) {

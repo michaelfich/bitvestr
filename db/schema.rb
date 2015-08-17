@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814163905) do
+ActiveRecord::Schema.define(version: 20150815041349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collaborations", force: :cascade do |t|
+    t.integer  "strategy_id"
+    t.integer  "user_id"
+    t.boolean  "confirmed"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "collaborations", ["strategy_id"], name: "index_collaborations_on_strategy_id", using: :btree
+  add_index "collaborations", ["user_id"], name: "index_collaborations_on_user_id", using: :btree
 
   create_table "formulas", force: :cascade do |t|
     t.string  "name"
@@ -67,6 +78,8 @@ ActiveRecord::Schema.define(version: 20150814163905) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "collaborations", "strategies"
+  add_foreign_key "collaborations", "users"
   add_foreign_key "indicators", "strategies"
   add_foreign_key "strategies", "users"
 end
