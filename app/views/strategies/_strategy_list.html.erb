@@ -1,0 +1,26 @@
+<% if @strategies %>
+  <ol class="strategies">
+    <% @strategies.each do |strategy| %>
+      <li class="strategy">
+        <% if strategy.classification == 'crossover' %>
+          <%= link_to strategy_crossover_path(strategy) do %>
+            <div class="name">
+              <%= strategy.name %>
+              <% unless strategy.owner?(current_user) %>
+                (shared by <%= strategy.user.full_name %>)
+              <% end %>
+            </div>
+            <div class="classification">
+              <%= strategy.classification.capitalize %>
+            </div>
+          <% end %>
+        <% elsif strategy.classification == 'momentum' %>
+          <%= link_to strategy_momentum_path(strategy) do %>
+            <div class="name"><%= strategy.name %></div>
+            <div class="classification"><%= strategy.classification.capitalize %></div>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>

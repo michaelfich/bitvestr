@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   belongs_to :profile
   has_many :strategies
+  has_many :collaborations
 
   validates :password, length: { minimum: 4 }
   validates :password, confirmation: true
@@ -13,4 +14,8 @@ class User < ActiveRecord::Base
 
   validates :last_name, presence: true
   # validates :last_name, length: { minimum: 2, maximum, 20 }
+
+  def full_name
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+  end
 end

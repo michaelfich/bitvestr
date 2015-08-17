@@ -6,7 +6,7 @@
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'https://www.google.com/jsapi' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -22,11 +22,7 @@
 
       <% if current_user %>
         <aside class="session">
-          You are logged in as
-          <strong>
-            <%= current_user.first_name.capitalize %>
-            <%= current_user.last_name.capitalize %>
-          </strong>
+          You are logged in as <strong><%= current_user.full_name %></strong>
         </aside>
       <% end %>
      </header>
@@ -37,6 +33,7 @@
       <ul class="left">
         <li><%= link_to 'Home', root_url %></li>
         <li><%= link_to 'Strategies', strategies_path %></li>
+        <li><%= link_to 'Collaborations', strategy_collaborations_path %></li>
       </ul>
       <ul class="right">
         <% if current_user %>

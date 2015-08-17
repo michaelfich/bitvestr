@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  strategy_id: 
+  collaborator_id: 
+  accepted: false
+  view: false
+  edit: false
+
+two:
+  strategy_id: 
+  collaborator_id: 
+  accepted: false
+  view: false
+  edit: false

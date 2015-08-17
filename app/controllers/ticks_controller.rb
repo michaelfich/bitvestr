@@ -77,7 +77,7 @@ class TicksController < ApplicationController
   end
 
   def calculate_price(tick, calculation, range)
-    if calculation = "ma"
+    if calculation = "sma"
       tick.ma(range, @interval)
     elsif calculation = "ema"
       tick.ema(range, @interval)

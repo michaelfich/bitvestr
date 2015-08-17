@@ -34,6 +34,7 @@ class Strategy::CrossoversController < ApplicationController
     @buy_high = @strategy.indicators.second
     @sell_low = @strategy.indicators.third
     @sell_high = @strategy.indicators.fourth
+    @collaborator = Collaboration.new
     @formulas = get_formulas
   end
 
@@ -65,7 +66,7 @@ class Strategy::CrossoversController < ApplicationController
     @strategy.destroy
 
     flash[:notice] = "Successfully deleted strategy: #{@strategy.name}"
-    redirect_to strategy_crossover_url(@strategy)
+    redirect_to strategies_url
   end
 
   private

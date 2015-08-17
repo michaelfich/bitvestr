@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get 'ticks' => 'ticks#index'
 
   namespace :strategy do
-    resources :crossovers, :momentums, :thresholds, except: :index
+    resources :crossovers, :momentums, except: :index
+    resources :collaborations, only: [:index, :create, :update, :delete]
   end
 
   resources :strategies

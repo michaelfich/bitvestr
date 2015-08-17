@@ -1,0 +1,12 @@
+div.collaboration {
+  ul {
+    display: none;
+    color: white;
+    &.confirm { background: green; }
+    &.errors { background: red; }
+  }
+}
+
+form.edit_collaboration {
+  display: inline;
+}

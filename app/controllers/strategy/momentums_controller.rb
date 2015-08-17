@@ -32,6 +32,7 @@ class Strategy::MomentumsController < ApplicationController
     @strategy = Strategy.find(params[:id])
     @buy = @strategy.indicators.first
     @sell = @strategy.indicators.second
+    @collaborator = Collaboration.new
     @formulas = get_formulas
   end
 

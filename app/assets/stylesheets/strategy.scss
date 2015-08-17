@@ -24,41 +24,36 @@ div#strategy {
   }
 }
 
-div.strategies {
-  h2 {
-    text-align: center;
-  }
-  ol {
-    padding: 0;
-    list-style: none;
-    overflow: auto;
-    li a {
-      width: 100%;
+ol.strategies {
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+  li a {
+    width: 100%;
+    box-sizing: border-box;
+    div {
+      padding: 20px;
       box-sizing: border-box;
-      div {
-        padding: 20px;
-        box-sizing: border-box;
-        background: rgba(255,255,255,0.5);
-        margin: 2px 0;
-        &.name {
-          width: 660px;
-          float: left;
-        }
-        &.classification {
-          width: 300px;
-          float: right;
-          text-align: right;
-        }
+      background: rgba(255,255,255,0.5);
+      margin: 2px 0;
+      &.name {
+        width: 660px;
+        float: left;
       }
-      &:hover {
-        div {
-          background: rgba(255,255,255,1);
-        }
+      &.classification {
+        width: 300px;
+        float: right;
+        text-align: right;
       }
     }
-
+    &:hover {
+      div {
+        background: rgba(255,255,255,1);
+      }
+    }
   }
 }
+
 
 span.calculation {
   font-weight: bold;

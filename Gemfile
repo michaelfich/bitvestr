@@ -38,7 +38,7 @@ gem 'capistrano-rails', group: :development
 gem 'capistrano-bundler'
 
 # if you are using RBENV
-gem 'capistrano-rbenv', "~> 2.0" 
+gem 'capistrano-rbenv', "~> 2.0"
 
 # Use the Unicorn app server
 gem 'unicorn'
@@ -57,6 +57,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'better_errors', '~> 2.1.1'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
