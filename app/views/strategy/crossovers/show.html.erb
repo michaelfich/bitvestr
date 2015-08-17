@@ -2,23 +2,27 @@
   <header>
     <h2><%= @strategy.name %></h2>
     <p>A <%= @strategy.classification.capitalize %> Strategy</p>
-    <p class="nav">
-      <%= link_to 'Edit', edit_strategy_crossover_path(@strategy) %>
-      <%= link_to 'Delete', strategy_crossover_path(@strategy), method: :delete %>
-    </p>
+    <% if @strategy.user == current_user %>
+      <p class="nav">
+        <%= link_to 'Edit', edit_strategy_crossover_path(@strategy) %>
+        <%= link_to 'Delete', strategy_crossover_path(@strategy), method: :delete %>
+      </p>
+    <% end %>
   </header>
 
-  <div class="collaboration">
-    <div class="collaborator">
-      <%= form_for ['strategy', @collaborator] do |f| %>
-        <%= f.hidden_field :strategy_id, value: @strategy.id %>
-        <%= f.email_field :user %>
-        <%= f.button "Add collaborator" %>
-      <% end %>
-      <ul class="confirm"></ul>
-      <ul class="errors"></ul>
+  <% if @strategy.user == current_user %>
+    <div class="collaboration">
+      <div class="collaborator">
+        <%= form_for ['strategy', @collaborator] do |f| %>
+          <%= f.hidden_field :strategy_id, value: @strategy.id %>
+          <%= f.email_field :user %>
+          <%= f.button "Add collaborator" %>
+        <% end %>
+        <ul class="confirm"></ul>
+        <ul class="errors"></ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="legend">
     <p>
