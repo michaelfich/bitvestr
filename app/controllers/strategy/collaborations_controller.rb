@@ -18,6 +18,8 @@ class Strategy::CollaborationsController < ApplicationController
     errors = []
     if @user.nil?
       errors << "#{email} is not a valid user"
+    elsif @user == current_user
+      errors << "Cannot add yourself as a collaborator on this strategy"
     elsif Collaboration.approved?(@strategy, @user).any?
       errors << "#{@user.email} is already a collaborator on this trading strategy"
     elsif Collaboration.pending?(@strategy, @user).any?
