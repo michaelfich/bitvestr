@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def pending_collaborations
     if current_user
       count = Collaboration.pending(current_user).count
-      @pending_collaboration = if count
+      @pending_collaboration = if count > 0
         "Collaborations ( #{count} )"
       else
         "Collaborations"
