@@ -4,6 +4,8 @@ Formula.create(name: "ema", abbreviation: "EMA", full_name: "Exponential Moving 
 Formula.create(name: "macd", abbreviation: "MACD", full_name: "Moving Average Convergence Divergence", order_number: 3)
 Formula.create(name: "rsi", abbreviation: "RSI", full_name: "Relative Strength Index", order_number: 4)
 
+Strategy.destroy_all
+
 User.destroy_all
 User.create(
   first_name: "michael",
