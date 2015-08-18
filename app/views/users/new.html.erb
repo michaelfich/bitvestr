@@ -1,27 +1,31 @@
-<h2>Sign up!</h2>
+<section class="outer-container">
+  <section class="inner-container">
+    <h2>Sign up!</h2>
 
-<%= form_for @user, html: { class: 'user' } do |f| %>
-  <div class="field">
-    <%= f.text_field :first_name, autocomplete: :off %>
-    <%= f.label :first_name %>
-  </div>
-  <div class="field">
-    <%= f.text_field :last_name, autocomplete: :off %>
-    <%= f.label :last_name %>
-  </div>
-  <div class="field">
-    <%= f.email_field :email, autocomplete: :off %>
-    <%= f.label :email %>
-  </div>
-  <div class="field">
-    <%= f.password_field :password, autocomplete: :off %>
-    <%= f.label :password %>
-  </div>
-  <div class="field">
-    <%= f.password_field :password_confirmation, autocomplete: :off %>
-    <%= f.label :password_confirmation, 'Confirm Password' %>
-  </div>
-  <div class="buttons">
-    <%= f.button "Register", class: "blue" %>
-  </div>
-<% end %>
+    <%= form_for @user, html: { class: 'user' } do |f| %>
+      <div class="field">
+        <%= f.text_field :first_name, autocomplete: :off %>
+        <%= f.label :first_name %>
+      </div>
+      <div class="field">
+        <%= f.text_field :last_name, autocomplete: :off %>
+        <%= f.label :last_name %>
+      </div>
+      <div class="field">
+        <%= f.email_field :email, autocomplete: :off %>
+        <%= f.label :email %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password, autocomplete: :off %>
+        <%= f.label :password %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: :off %>
+        <%= f.label :password_confirmation, 'Confirm Password' %>
+      </div>
+      <div class="buttons">
+        <%= f.button "Register", class: "blue" %>
+      </div>
+    <% end %>
+  </section>
+</section>

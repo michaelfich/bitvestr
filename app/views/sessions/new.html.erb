@@ -1,19 +1,21 @@
-<h2>Sign in</h2>
+<section class="outer-container">
+  <section class="inner-container">
+    <h2>Sign in</h2>
 
-<%= form_tag sessions_path, method: :post, class: 'user' do %>
-  <div class="field">
-    <%= email_field_tag :email, "", autocomplete: :off %>
-    <%= label_tag :email, 'Email Address' %>
-  </div>
+    <%= form_tag sessions_path, method: :post, class: 'user' do %>
+      <div class="field">
+        <%= email_field_tag :email, "", autocomplete: :off %>
+        <%= label_tag :email, 'Email Address' %>
+      </div>
 
+      <div class="field">
+        <%= password_field_tag :password, "", autcomplete: :off %>
+        <%= label_tag :password %>
+      </div>
 
-
-  <div class="field">
-    <%= password_field_tag :password, "", autcomplete: :off %>
-    <%= label_tag :password %>
-  </div>
-
-  <div class="buttons">
-    <%= button_tag "Log in!", class: 'blue' %>
-  </div>
-<% end %>
+      <div class="buttons">
+        <%= button_tag "Log in to your account", class: 'blue' %>
+      </div>
+    <% end %>
+  </section>
+</section>

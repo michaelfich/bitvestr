@@ -1,46 +1,77 @@
-<div id="strategy" class="momentum">
-  <header>
-    <h2><%= @strategy.name %></h2>
-    <p>A <%= @strategy.classification.capitalize %> Strategy</p>
-    <p class="nav">
-      <%= link_to 'Edit', edit_strategy_momentum_path(@strategy) %>
-      <%= link_to 'Delete', strategy_momentum_path(@strategy), method: :delete %>
-    </p>
-  </header>
+<section class="outer-container">
+  <section class="inner-container">
+    <div class="strategy momentum">
+      <header>
+        <h2><%= @strategy.name %></h2>
+        <p>A <%= @strategy.classification.capitalize %> Strategy</p>
+        <p class="nav">
+          <%= link_to 'Edit', edit_strategy_momentum_path(@strategy) %>
+          <%= link_to 'Delete', strategy_momentum_path(@strategy), method: :delete %>
+        </p>
+      </header>
+  </section>
+</section>
 
-  <div class="collaboration">
-    <div class="collaborator">
-      <%= form_for ['strategy', @collaborator] do |f| %>
-        <%= f.hidden_field :strategy_id, value: @strategy.id %>
-        <%= f.email_field :user %>
-        <%= f.button "Add collaborator" %>
-      <% end %>
-      <ul class="confirm"></ul>
-      <ul class="errors"></ul>
+<section class="outer-container">
+  <section class="inner-container">
+    <div class="strategy momentum">
+      <div class="legend">
+        <p>
+          <span class="indicator buy"></span>
+          Buy when the <strong><%= Formula.display(@buy.name) %>(<span id="buy"><%= @buy.value.to_i %></span>)</strong> is less than the current value of Bitcoin.
+        </p>
+        <p>
+          <span class="indicator sell"></span>
+          Sell when the <strong><%= Formula.display(@sell.name) %>(<span id="sell"><%= @sell.value.to_i %></span>)</strong> is greater than the current value of Bitcoin.
+        </p>
+        <p>
+          <span class="indicator both"></span>
+          Both buy and sell conditions are met
+        </p>
+        <p>
+          <span class="indicator none"></span>
+          Neither sell or buy.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="legend">
-    <p>
-      <span class="indicator buy"></span>
-      Buy when the <strong><%= Formula.display(@buy.name) %>(<span id="buy"><%= @buy.value.to_i %></span>)</strong> is less than the current value of Bitcoin.
-    </p>
-    <p>
-      <span class="indicator sell"></span>
-      Sell when the <strong><%= Formula.display(@sell.name) %>(<span id="sell"><%= @sell.value.to_i %></span>)</strong> is greater than the current value of Bitcoin.
-    </p>
-    <p>
-      <span class="indicator both"></span>
-      Both buy and sell conditions are met
-    </p>
-    <p>
-      <span class="indicator none"></span>
-      Neither sell or buy.
-    </p>
-  </div>
-</div>
+    <div id="chart"></div>
+  </section>
+</section>
 
-<div id="chart"></div>
+<section class="outer-container">
+  <section class="inner-container">
+    <% if @strategy.user == current_user %>
+      <h3>Invite another user to view your trading strategy</h3>
+      <div class="collaboration">
+        <div class="collaborator">
+          <%= form_for ['strategy', @collaborator] do |f| %>
+            <%= f.hidden_field :strategy_id, value: @strategy.id %>
+            <div class="field">
+              <%= f.email_field :user, autocomplete: :off %>
+              <%= f.label :user, "Email Adddress" %>
+            </div>
+            <div class="buttons">
+              <%= f.button "Add collaborator", class: 'blue' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</section>
+
+<section class="outer-container red collaboration">
+  <section class="inner-container">
+    <ul class="errors"></ul>
+  </section>
+</section>
+
+<section class="outer-container green collaboration">
+  <section class="inner-container">
+    <ul class="confirm"></ul>
+  </section>
+</section>
 
 <script>
 $(document).on('ready page:load', function() {

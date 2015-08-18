@@ -1,11 +1,12 @@
 function showCollaborationMessage(list, messages) {
-  $('.collaboration ul').empty().hide();
+  var $containers = $('section.collaboration').hide(),
+      $lists = $('section.collaboration ul').empty();
 
   for (var i = 0; i < messages.length; i++) {
     $("<li></li>").html(messages[i]).appendTo(list);
   }
 
-  list.slideDown(400);
+  list.parent().parent().fadeIn(1000);
 }
 
 $(document).on('ready page:load', function() {
@@ -27,9 +28,9 @@ $(document).on('ready page:load', function() {
         dataType: 'json',
       }).done(function(result) {
         if (result.success) {
-          showCollaborationMessage($('.collaboration ul.confirm'), result.confirm);
+          showCollaborationMessage($('section.collaboration ul.confirm'), result.confirm);
         } else {
-          showCollaborationMessage($('.collaboration ul.errors'), result.errors);
+          showCollaborationMessage($('section.collaboration ul.errors'), result.errors);
         }
       });
     }

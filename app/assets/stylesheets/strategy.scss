@@ -1,19 +1,17 @@
-div#strategy {
+div.strategy.crossover,
+div.strategy.momentum {
   header {
     text-align: center;
     margin: 10px 0;
-
     h2 {
-      margin: 10px 0 0;
+      margin-bottom: 0;
     }
-
     p {
-      border-top: 1px solid rgba(100,100,100,0.5);
+      // border-top: 1px solid rgba(100,100,100,0.5);
       padding-top: 5px;
       font-style: oblique;
       font-weight: normal;
       margin: 0;
-
       &.nav {
         border: none;
         text-align: center;
@@ -54,12 +52,12 @@ ol.strategies {
   }
 }
 
-
 span.calculation {
   font-weight: bold;
 }
 
-#strategy {
+div.strategy.crossover,
+div.strategy.momentum {
   width: 700px;
   margin: 0 auto;
   div.legend {

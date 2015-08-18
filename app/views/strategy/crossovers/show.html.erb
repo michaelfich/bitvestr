@@ -1,50 +1,79 @@
-<div id="strategy" class="crossover">
-  <header>
-    <h2><%= @strategy.name %></h2>
-    <p>A <%= @strategy.classification.capitalize %> Strategy</p>
-    <% if @strategy.user == current_user %>
-      <p class="nav">
-        <%= link_to 'Edit', edit_strategy_crossover_path(@strategy) %>
-        <%= link_to 'Delete', strategy_crossover_path(@strategy), method: :delete %>
-      </p>
-    <% end %>
-  </header>
-
-  <% if @strategy.user == current_user %>
-    <div class="collaboration">
-      <div class="collaborator">
-        <%= form_for ['strategy', @collaborator] do |f| %>
-          <%= f.hidden_field :strategy_id, value: @strategy.id %>
-          <%= f.email_field :user %>
-          <%= f.button "Add collaborator" %>
+<section class="outer-container">
+  <section class="inner-container">
+    <div class="strategy crossover">
+      <header>
+        <h2><%= @strategy.name %></h2>
+        <p>A <%= @strategy.classification.capitalize %> Strategy</p>
+        <% if @strategy.user == current_user %>
+          <p class="nav">
+            <%= link_to 'Edit', edit_strategy_crossover_path(@strategy) %>
+            <%= link_to 'Delete', strategy_crossover_path(@strategy), method: :delete %>
+          </p>
         <% end %>
-        <ul class="confirm"></ul>
-        <ul class="errors"></ul>
+      </header>
+    </div>
+  </section>
+</section>
+
+<section class="outer-container">
+  <section class="inner-container">
+    <div class="strategy crossover">
+      <div class="legend">
+        <p>
+          <span class="indicator buy"></span>
+          Buy when <strong><%= Formula.display(@buy_low.name) %>(<span id="bl_range"><%= @buy_low.value.to_i %></span>)</strong> is less than the <strong><%= Formula.display(@buy_high.name) %>(<span id="bh_range"><%= @buy_high.value.to_i %></span>)</strong>
+        </p>
+        <p>
+          <span class="indicator sell"></span>
+          Sell when <strong><%= Formula.display(@sell_low.name) %>(<span id="sl_range"><%= @sell_low.value.to_i %></span>)</strong> is less than the <strong><%= Formula.display(@sell_high.name) %>(<span id="sh_range"><%= @sell_high.value.to_i %></span>)</strong>
+        </p>
+        <p>
+          <span class="indicator both"></span>
+          Both buy and sell conditions are met
+        </p>
+        <p>
+          <span class="indicator none"></span>
+          Neither sell or buy.
+        </p>
       </div>
     </div>
-  <% end %>
 
-  <div class="legend">
-    <p>
-      <span class="indicator buy"></span>
-      Buy when <strong><%= Formula.display(@buy_low.name) %>(<span id="bl_range"><%= @buy_low.value.to_i %></span>)</strong> is less than the <strong><%= Formula.display(@buy_high.name) %>(<span id="bh_range"><%= @buy_high.value.to_i %></span>)</strong>
-    </p>
-    <p>
-      <span class="indicator sell"></span>
-      Sell when <strong><%= Formula.display(@sell_low.name) %>(<span id="sl_range"><%= @sell_low.value.to_i %></span>)</strong> is less than the <strong><%= Formula.display(@sell_high.name) %>(<span id="sh_range"><%= @sell_high.value.to_i %></span>)</strong>
-    </p>
-    <p>
-      <span class="indicator both"></span>
-      Both buy and sell conditions are met
-    </p>
-    <p>
-      <span class="indicator none"></span>
-      Neither sell or buy.
-    </p>
-  </div>
-</div>
+    <div id="chart"></div>
+  </section>
+</section>
 
-<div id="chart"></div>
+<section class="outer-container">
+  <section class="inner-container">
+    <% if @strategy.user == current_user %>
+      <div class="collaboration">
+        <div class="collaborator">
+          <%= form_for ['strategy', @collaborator] do |f| %>
+            <%= f.hidden_field :strategy_id, value: @strategy.id %>
+            <div class="field">
+              <%= f.email_field :user, autocomplete: :off %>
+              <%= f.label :user, "Email Adddress" %>
+            </div>
+            <div class="buttons">
+              <%= f.button "Add collaborator", class: 'blue' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</section>
+
+<section class="outer-container green collaboration">
+  <section class="inner-container">
+    <ul class="confirm"></ul>
+  </section>
+</section>
+
+<section class="outer-container red collaboration">
+  <section class="inner-container">
+    <ul class="errors"></ul>
+  </section>
+</section>
 
 <script>
 $(document).on('ready page:load', function() {

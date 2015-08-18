@@ -9,14 +9,37 @@ div#welcome {
     p {
       text-align: center;
       // font-weight: bold;
-      font-size: 1.75rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
       letter-spacing: -1px;
       color: #888;
-      font-style: oblique;
-      font-family: Georgia, serif;
-      margin: 0 0 50px;
+      // font-style: oblique;
+      margin: 0 0 10px;
       span.hashtag {
         color: rgb(41, 182, 246);
+      }
+    }
+  }
+  nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        display: inline;
+        padding: 0;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        &:after {
+          display: inline-block;
+          content: "•";
+          margin-left: 5px;
+        }
+        &:last-child:after {
+          display: inline;
+          content: "";
+          margin: 0;
+        }
       }
     }
   }

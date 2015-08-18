@@ -7,6 +7,26 @@ div.collaboration {
   }
 }
 
+form.new_collaboration {
+  width: 500px;
+  margin: 0 auto;
+  div.field {
+    label {
+      display: block;
+    }
+    input {
+      border-right: none;
+      border-left: none;
+      padding: 0;
+      width: 500px;
+      text-align: center;
+    }
+  }
+  div.buttons {
+    margin-bottom: 20px !important;
+  }
+}
+
 form.edit_collaboration {
   display: inline;
 }

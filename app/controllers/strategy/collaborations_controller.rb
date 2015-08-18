@@ -19,11 +19,11 @@ class Strategy::CollaborationsController < ApplicationController
     if @user.nil?
       errors << "#{email} is not a valid user"
     elsif @user == current_user
-      errors << "Cannot add yourself as a collaborator on this strategy"
+      errors << "You cannot add yourself as a collaborator"
     elsif Collaboration.approved?(@strategy, @user).any?
-      errors << "#{@user.email} is already a collaborator on this trading strategy"
+      errors << "#{@user.full_name} is already a collaborator on this trading strategy"
     elsif Collaboration.pending?(@strategy, @user).any?
-      errors << "#{@user.email} has already been sent an invitation to collaborate on this strategy"
+      errors << "#{@user.full_name} has already been sent an invitation to collaborate on this strategy"
     else
       collaboration.user = @user
     end
