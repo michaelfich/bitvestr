@@ -1,4 +1,4 @@
 <div class="group">
   <%= f.select :name, options_for_select(@formulas, selected: f.object.name) %>
-  (<%= f.number_field :value, { min: 1, max: 500 } %>)
+  (<%= f.number_field :value, { min: 1, max: 100 } %>)
 </div>

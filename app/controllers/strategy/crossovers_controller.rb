@@ -1,4 +1,7 @@
 class Strategy::CrossoversController < ApplicationController
+  before_filter :require_login
+  before_filter :allowed, only: [:show]
+
   def new
     @strategy = Strategy.new
     @strategy.classification = "crossover"
@@ -76,5 +79,17 @@ class Strategy::CrossoversController < ApplicationController
         :id, :name, :value, :comparison, :period, :_destroy
       ]
     )
+  end
+
+  def allowed
+    strategy = Strategy.find(params[:id])
+
+    collaborator = Collaboration.where(strategy: strategy, user: current_user).any?
+    owner = (strategy.user === current_user)
+
+    unless owner || collaborator
+      flash[:alert] = "You are not authorized to view that strategy"
+      redirect_to strategies_url
+    end
   end
 end

@@ -13,11 +13,13 @@ class ApplicationController < ActionController::Base
   def get_intervals
     intervals = [
       ["10 minutes", 1],
+      ["20 minutes", 2],
       ["30 minutes", 3],
+      ["40 minutes", 4],
+      ["50 minutes", 5],
       ["1 hour", 6],
       ["2 hours", 12],
-      ["4 hours", 48],
-      ["8 hours", 96]
+      ["3 hours", 18],
     ]
   end
 end
