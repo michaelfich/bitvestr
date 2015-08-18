@@ -18,7 +18,6 @@ div.strategy.momentum {
         font-style: normal;
       }
     }
-    margin-bottom: 50px;
   }
 }
 
@@ -97,6 +96,7 @@ section.outer-container.chart {
   border-top: 1px solid #bdc3c7;
   border-bottom: 1px solid #bdc3c7;
   background: #ecf0f1;
+  margin: 10px 0;
 }
 
 #chart {
@@ -104,4 +104,48 @@ section.outer-container.chart {
   height: 360px;
   margin: 5px auto;
   background: transparent;
+}
+
+form.strategy {
+  div.field {
+    margin: 0 auto;
+    padding-bottom: 20px;
+    width: 500px;
+    select {
+      margin-top: 20px;
+      border: none;
+      background: transparent;
+      color: #333;
+      font-family: 'Roboto', sans-serif;
+      text-shadow: none;
+      font-style: normal;
+      font-size: 1.5rem;
+      vertical-align: middle;
+      padding: 5px;
+      line-height: 1rem;
+      border-radius: 2px;
+      display: inline-block;
+      overflow: auto;
+      padding: 0 100px;
+      text-align: center;
+      width: 500px;
+      outline: none;
+    }
+    input {
+      border-right: none;
+      border-left: none;
+      width: 500px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      width: 500px;
+      margin: 0 auto;
+      text-align: left;
+      &.select {
+        margin-top: 5px;
+        border-top: 1px solid rgba(200,200,200,1);
+      }
+    }
+  }
 }

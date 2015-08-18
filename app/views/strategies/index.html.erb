@@ -1,9 +1,18 @@
-<section class="outer-container">
+<section class="outer-container strategies">
   <section class="inner-container">
-    <div class="strategies">
-      <h2>Your Trading Strategies</h2>
-      <%= render "strategy_list" %>
-    </div>
+    <h2>Your Trading Strategies</h2>
+
+    <% if @strategies.any? %>
+      <div class="strategies">
+        <%= render "strategy_list" %>
+      </div>
+    <% else %>
+      <div class="none">
+        <p>
+          You don't have any strategies yet.  Click the <em>New Crossover Strategy</em> or <em>New Momentum Strategy</em> button below to get started.
+        </p>
+      </div>
+    <% end %>
 
     <% if current_user %>
       <div class="buttons">

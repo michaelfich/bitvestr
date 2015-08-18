@@ -117,6 +117,10 @@ div.alert {
   }
 }
 
+section.outer-container.strategies {
+  min-height: 450px;
+}
+
 form.strategy {
   div.strategy,
   div.indicator,
@@ -200,9 +204,7 @@ h1 {
   display: inline-block;
   border: 0.13em solid #444;
   color: #444;
-  // border-radius: 50px;
   background-image: url(image_path('light_noise_diagonal.png'));
-  // background: #f7931a;
   font-size: 2rem;
   font-family: 'Audiowide', cursive;
   text-shadow:
@@ -211,10 +213,8 @@ h1 {
   // box-shadow:
   //   1px 1px 0 #fff,
   //   3px 3px 0 rgba(80,80,80,0.2);
-    // font-weight: normal;
   text-align: center;
   padding: 10px 30px;
-  // margin: 20px 0;
   margin: 1rem 0;
   letter-spacing: 1px;
   line-height: 1em;

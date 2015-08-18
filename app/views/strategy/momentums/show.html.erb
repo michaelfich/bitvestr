@@ -87,7 +87,7 @@ $(document).on('ready page:load', function() {
 
   function getChart() {
     $.ajax({
-      url: 'http://localhost:3000/ticks',
+      url: '/ticks',
       method: 'get',
       dataType: 'json',
       data: {
