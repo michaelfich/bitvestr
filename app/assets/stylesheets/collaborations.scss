@@ -5,6 +5,18 @@ div.collaboration {
     &.confirm { background: green; }
     &.errors { background: red; }
   }
+  &.pending {
+    width: 500px;
+    margin: 30px auto;
+    button {
+      padding: .3rem .8rem;
+      border: 1px solid #333;
+      background: white;
+      outline: none;
+      float: right;
+      margin-left: 2px;
+    }
+  }
 }
 
 form.new_collaboration {

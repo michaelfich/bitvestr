@@ -1,8 +1,13 @@
 <section class="outer-container">
   <section class="inner-container">
-    <h2>Collaborations</h2>
+    <div class="collaborations">
+      <h2>Collaborations</h2>
+      <%= render "strategies/strategy_list" %>
+    </div>
 
-    <%= render "pending" %>
-    <%= render "strategies/strategy_list" %>
+    <div class="collaboration pending">
+      <h3>You currently have <%= @pending.count %> invitations pending</h3>
+      <%= render "pending" %>
+    </div>
   </section>
 </section>

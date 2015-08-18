@@ -37,7 +37,11 @@
         </p>
       </div>
     </div>
+  </section>
+</section>
 
+<section class="outer-container chart">
+  <section class="inner-container">
     <div id="chart"></div>
   </section>
 </section>
@@ -45,6 +49,7 @@
 <section class="outer-container">
   <section class="inner-container">
     <% if @strategy.user == current_user %>
+      <h3>Invite another user to view your trading strategy</h3>
       <div class="collaboration">
         <div class="collaborator">
           <%= form_for ['strategy', @collaborator] do |f| %>

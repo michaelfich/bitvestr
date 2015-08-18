@@ -6,7 +6,7 @@ form.strategy {
       margin: 10px 0;
       // font-family: 'Audiowide', cursive;
       font-family: 'Slabo 27px', serif;
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       text-align: center;
       font-style: oblique;
       color: #555;
@@ -38,6 +38,7 @@ form.strategy {
           border-bottom: 1px dotted rgba(150,150,150,1);
           text-align: center;
           padding-left: 10px;
+          width: 80px;
         }
         select {
           border: none;
