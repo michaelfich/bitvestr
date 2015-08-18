@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :strategies
   has_many :collaborations
 
+  validates :email, uniqueness: true
+
   validates :password, length: { minimum: 4 }
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
