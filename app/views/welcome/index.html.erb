@@ -8,7 +8,7 @@
           <ul>
             <% if current_user %>
               <li><%= link_to 'Strategies', strategies_path %></li>
-              <li><%= link_to 'Collaborations', strategy_collaborations_path %></li>
+              <li><%= link_to @pending_collaboration, strategy_collaborations_path %></li>
               <li><%= link_to 'Sign out', logout_path, method: :delete %></li>
             <% else %>
               <li><%= link_to 'Sign in', login_path %></li>

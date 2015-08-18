@@ -2,6 +2,20 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_filter :pending_collaborations
+
+  def pending_collaborations
+    if current_user
+      count = Collaboration.pending(current_user).count
+      @pending_collaboration = if count
+        "Collaborations ( #{count} )"
+      else
+        "Collaborations"
+      end
+    else
+      @pending_collaboration = "Collaborations"
+    end
+  end
 
   def get_formulas
     formulas = Formula.ordered

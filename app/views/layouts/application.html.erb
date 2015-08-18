@@ -31,7 +31,7 @@
           <ul class="right">
             <% if current_user %>
               <li><%= link_to 'Strategies', strategies_path %></li>
-              <li><%= link_to 'Collaborations', strategy_collaborations_path %></li>
+              <li><%= link_to @pending_collaboration, strategy_collaborations_path %></li>
               <li><%= link_to 'Sign out', logout_path, method: :delete %></li>
             <% else %>
               <li><%= link_to 'Sign in', login_path %></li>
@@ -43,11 +43,7 @@
     </header>
   <% end %>
 
-  <!-- <section class="outer-container"> -->
-    <!-- <section class="inner-container"> -->
-      <%= yield %>
-    <!-- </section> -->
-  <!-- </section> -->
+  <%= yield %>
 
   <% unless controller_name == 'welcome' && action_name == 'index' %>
     <footer class="outer-container">
